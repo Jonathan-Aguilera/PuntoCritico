@@ -1,122 +1,70 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router'
+import { AnimatePresence } from 'motion/react'
+import { Suspense, useEffect } from 'react'
+import { lazyWithPreload } from 'react-lazy-with-preload'
 
-function App() {
-  const [count, setCount] = useState(0)
+import MainLayout from './layouts/MainLayout'
+import PageTransition from './components/ui/PageTransition'
+import Home from './pages/Home'
+import NotFound from './pages/NotFound'
+
+const Riesgos = lazyWithPreload(() => import('./pages/Riesgos'))
+const Impacto = lazyWithPreload(() => import('./pages/Impacto'))
+const Acceso = lazyWithPreload(() => import('./pages/Acceso'))
+const Habitos = lazyWithPreload(() => import('./pages/Habitos'))
+const Soluciones = lazyWithPreload(() => import('./pages/Soluciones'))
+const Historias = lazyWithPreload(() => import('./pages/Historias'))
+const Mapa = lazyWithPreload(() => import('./pages/Mapa'))
+
+export const preloadablePages: Record<string, ReturnType<typeof lazyWithPreload>> = {
+  '/riesgos': Riesgos,
+  '/impacto': Impacto,
+  '/acceso': Acceso,
+  '/habitos': Habitos,
+  '/soluciones': Soluciones,
+  '/historias': Historias,
+  '/mapa': Mapa,
+}
+
+function AnimatedRoutes() {
+  const location = useLocation()
+
+  useEffect(() => {
+    const idleCallback = window.requestIdleCallback(
+      () => {
+        Object.values(preloadablePages).forEach((Page) => Page.preload())
+      },
+      { timeout: 3000 }
+    )
+    return () => window.cancelIdleCallback(idleCallback)
+  }, [])
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+    <AnimatePresence mode="wait" initial={false}>
+      <Routes location={location} key={location.pathname}>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+          <Route path="/riesgos" element={<PageTransition><Riesgos /></PageTransition>} />
+          <Route path="/impacto" element={<PageTransition><Impacto /></PageTransition>} />
+          <Route path="/acceso" element={<PageTransition><Acceso /></PageTransition>} />
+          <Route path="/habitos" element={<PageTransition><Habitos /></PageTransition>} />
+          <Route path="/soluciones" element={<PageTransition><Soluciones /></PageTransition>} />
+          <Route path="/historias" element={<PageTransition><Historias /></PageTransition>} />
+          <Route path="/mapa" element={<PageTransition><Mapa /></PageTransition>} />
+          {/* Catch-all: cualquier ruta no listada arriba cae aquí */}
+          <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
+        </Route>
+      </Routes>
+    </AnimatePresence>
   )
 }
 
-export default App
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Suspense fallback={null}>
+        <AnimatedRoutes />
+      </Suspense>
+    </BrowserRouter>
+  )
+}
