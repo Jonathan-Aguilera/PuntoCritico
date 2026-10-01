@@ -2,7 +2,7 @@ import ViewContainer from '../components/ui/ViewContainer'
 
 export default function Home() {
   return (
-    <ViewContainer title="Corazón Salado" color="slate">
+    <ViewContainer title="Punto Crítico" color="slate">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim

@@ -40,7 +40,7 @@ export default function Header() {
           onClick={() => setIsOpen(false)}
           className="text-lg xl:text-xl font-bold tracking-tight hover:text-amber-300 transition shrink-0"
         >
-          Corazón Salado <span className="text-red-500">❤</span>
+          Punto Crítico
         </Link>
 
         {/* Nav desktop */}

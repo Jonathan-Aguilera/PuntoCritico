@@ -7,6 +7,7 @@ import MainLayout from './layouts/MainLayout'
 import PageTransition from './components/ui/PageTransition'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
+import { checkDatabaseConnectionOnce } from './services/dbTest'
 
 const Riesgos = lazyWithPreload(() => import('./pages/Riesgos'))
 const Impacto = lazyWithPreload(() => import('./pages/Impacto'))
@@ -60,6 +61,10 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
+  useEffect(() => {
+    checkDatabaseConnectionOnce()
+  }, [])
+
   return (
     <BrowserRouter>
       <Suspense fallback={null}>
