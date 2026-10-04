@@ -1,0 +1,5 @@
+{
+  "fields": [{"id":"_id","type":"int"},{"id":"indice_tiempo","type":"timestamp"},{"id":"republica_argentina","type":"numeric"},{"id":"capital_federal","type":"numeric"},{"id":"buenos_aires","type":"numeric"},{"id":"catamarca","type":"numeric"},{"id":"cordoba","type":"numeric"},{"id":"corrientes","type":"numeric"},{"id":"chaco","type":"numeric"},{"id":"chubut","type":"numeric"},{"id":"entre_rios","type":"numeric"},{"id":"formosa","type":"numeric"},{"id":"jujuy","type":"numeric"},{"id":"la_pampa","type":"numeric"},{"id":"la_rioja","type":"numeric"},{"id":"mendoza","type":"numeric"},{"id":"misiones","type":"numeric"},{"id":"neuquen","type":"numeric"},{"id":"rio_negro","type":"numeric"},{"id":"salta","type":"numeric"},{"id":"san_juan","type":"numeric"},{"id":"san_luis","type":"numeric"},{"id":"santa_cruz","type":"numeric"},{"id":"santa_fe","type":"numeric"},{"id":"santiago_del_estero","type":"numeric"},{"id":"tucuman","type":"numeric"},{"id":"tierra_del_fuego","type":"numeric"}],
+  "records": [
+    [108,"2021-01-01T00:00:00",436799,36201,177133,3572,37491,9324,11231,4484,13097,5134,5786,3445,3176,18086,9643,5202,6686,10092,6891,4673,2298,37931,8229,14906,849]
+]}

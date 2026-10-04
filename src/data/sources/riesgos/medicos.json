@@ -1,0 +1,28 @@
+{
+  "fields": [{"id":"_id","type":"int"},{"id":"provincia_id","type":"numeric"},{"id":"provincia_desc","type":"text"},{"id":"medicos_cantidad_total","type":"numeric"}],
+  "records": [
+    [1,2,"CABA",48447],
+    [2,6,"Buenos Aires",46223],
+    [3,14,"Cordoba",16283],
+    [4,82,"Santa Fe",15622],
+    [5,50,"Mendoza",6675],
+    [6,90,"Tucuman",5504],
+    [7,30,"Entre Rios",3977],
+    [8,18,"Corrientes",3470],
+    [9,66,"Salta",3015],
+    [10,22,"Chaco",2656],
+    [11,62,"Rio Negro",2513],
+    [12,58,"Neuquen",2482],
+    [13,54,"Misiones",2208],
+    [14,70,"San Juan",2174],
+    [15,26,"Chubut",1794],
+    [16,86,"Santiago del Estero",1708],
+    [17,38,"Jujuy",1674],
+    [18,46,"La Rioja",1444],
+    [19,74,"San Luis",1324],
+    [20,34,"Formosa",1093],
+    [21,42,"La Pampa",1058],
+    [22,10,"Catamarca",1042],
+    [23,78,"Santa Cruz",1005],
+    [24,94,"Tierra del Fuego",703]
+]}
