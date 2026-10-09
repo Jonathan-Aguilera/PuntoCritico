@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "fuente": "Elaboración propia a partir de ENFR 2018 y OMS",
+  "relaciones": [
+    { "from": "obesidad", "to": "hipertension", "tipo": "causa" },
+    { "from": "obesidad", "to": "diabetes", "tipo": "causa" },
+    { "from": "sedentarismo", "to": "obesidad", "tipo": "causa" },
+    { "from": "alimentacion", "to": "obesidad", "tipo": "causa" },
+    { "from": "alimentacion", "to": "colesterol", "tipo": "causa" },
+    { "from": "tabaquismo", "to": "hipertension", "tipo": "factor" },
+    { "from": "estres", "to": "hipertension", "tipo": "factor" },
+    { "from": "alcohol", "to": "hipertension", "tipo": "factor" },
+    { "from": "hipertension", "to": "no_modificables", "tipo": "agrava" },
+    { "from": "diabetes", "to": "no_modificables", "tipo": "agrava" }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "version": "1.0.0",
+  "fuente_principal": "Fundación Favaloro / Argentina.gob.ar / CONICET / Cleveland Clinic",
+  "nombre_completo": "René Gerónimo Favaloro",
+  "nacimiento": "12 de julio de 1923, La Plata, Argentina",
+  "fallecimiento": "29 de julio de 2000, Buenos Aires, Argentina",
+  "profesion": "Médico, inventor, educador y cardiocirujano",
+  "hito_principal": "Desarrolló la técnica del bypass aortocoronario en 1967 en la Cleveland Clinic (EE. UU.), utilizando la vena safena como injerto para sortear obstrucciones en las arterias coronarias.",
+  "imagen_retrato": {
+    "archivo": "Drs_Rene_Favaloro_and_Mason_Sones_c1970_A0353_(cropped).jpg",
+    "titulo": "Drs. René Favaloro and Mason Sones circa 1970",
+    "descripcion": "René Favaloro junto al Dr. Mason Sones, circa 1970.",
+    "autor": "Cleveland Clinic",
+    "fecha": "circa 1970",
+    "fuente": "Wikimedia Commons",
+    "credito": "Provided by Cleveland Clinic",
+    "licencia": "Creative Commons Attribution-Share Alike 4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Drs_Rene_Favaloro_and_Mason_Sones_c1970_A0353_(cropped).jpg"
+  },
+  "imagen_hito": {
+    "archivo": "Coronary_artery_bypass_grafting.jpg",
+    "titulo": "Coronary artery bypass grafting",
+    "descripcion": "Figura A: ubicación del corazón. Figura B: cómo se conectan los injertos de vena y arteria al corazón para sortear las obstrucciones.",
+    "autor": "National Heart Lung and Blood Institute (NIH)",
+    "fecha": "12 de noviembre de 2013",
+    "fuente": "Wikimedia Commons",
+    "credito": "National Heart Lung and Blood Institute (NIH)",
+    "licencia": "Dominio público (NIH)",
+    "url": "https://commons.wikimedia.org/wiki/File:Coronary_artery_bypass_grafting.jpg"
+  },
+  "biografia_resumida": [
+    {
+      "etapa": "Infancia y formación",
+      "texto": "Nació en el barrio 'El Mondongo' de La Plata, en una familia humilde. Se graduó de médico en la Universidad Nacional de La Plata en 1949."
+    },
+    {
+      "etapa": "Medicina rural (1949-1961)",
+      "texto": "Ejerció durante 12 años como médico rural en Jacinto Aráuz, La Pampa. Esta experiencia marcó su compromiso con la salud pública y la medicina social."
+    },
+    {
+      "etapa": "Cleveland Clinic (1962-1971)",
+      "texto": "Viajó a Estados Unidos para especializarse en cirugía cardiovascular. En 1967 realizó el primer bypass aortocoronario exitoso. Permaneció en la Cleveland Clinic hasta 1971."
+    },
+    {
+      "etapa": "Regreso a Argentina y Fundación (1971-2000)",
+      "texto": "Regresó al país en 1971 y en 1975 creó la Fundación Favaloro para la Docencia e Investigación Médica. En 1992 se inauguró el Instituto de Cardiología y Cirugía Cardiovascular, entidad sin fines de lucro."
+    }
+  ],
+  "legado": {
+    "impacto": "Su técnica de bypass ha salvado más de 55 millones de vidas a nivel mundial y se practica en cerca de 800.000 intervenciones al año.",
+    "prevencion": "Favaloro insistía en que la prevención era el primer paso para evitar los problemas cardíacos. Su legado incluye la importancia de la educación, la alimentación saludable y el acceso equitativo a la salud."
+  }
+}

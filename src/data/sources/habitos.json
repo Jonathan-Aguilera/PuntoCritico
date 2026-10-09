@@ -1,0 +1,41 @@
+{
+  "version": "1.0.0",
+  "fuente_principal": "American Heart Association / OMS / World Heart Federation",
+  "mitos_y_realidades": [
+    {
+      "id": "edad",
+      "mito": "Las enfermedades del corazón solo afectan a las personas mayores.",
+      "realidad": "Las enfermedades cardiovasculares pueden empezar a desarrollarse en la juventud. La aterosclerosis, por ejemplo, puede iniciarse en la infancia y progresar con el tiempo. La forma en que vives ahora (alimentación, ejercicio, tabaco) afecta directamente tu riesgo futuro."
+    },
+    {
+      "id": "sintomas",
+      "mito": "Si tuviera presión arterial alta, lo sabría porque tendría síntomas.",
+      "realidad": "La hipertensión es llamada el 'asesino silencioso' porque generalmente no presenta síntomas hasta que ya ha causado daño significativo al corazón, los vasos sanguíneos, los riñones o el cerebro. La única forma de saberlo es midiéndola."
+    },
+    {
+      "id": "alcohol",
+      "mito": "Tomar una copa de vino tinto al día es bueno para el corazón.",
+      "realidad": "La evidencia científica más reciente y robusta ha desmentido este mito. Cualquier cantidad de alcohol conlleva riesgos para la salud, incluyendo un mayor riesgo de arritmias, hipertensión y daño al músculo cardíaco. Los supuestos beneficios no superan los riesgos."
+    },
+    {
+      "id": "genetica",
+      "mito": "Si tengo antecedentes familiares de enfermedad cardíaca, no hay nada que pueda hacer para prevenirlo.",
+      "realidad": "Aunque los antecedentes familiares aumentan el riesgo, no son un destino inevitable. La genética 'carga el arma', pero el estilo de vida 'aprieta el gatillo'. Adoptar hábitos saludables puede reducir drásticamente el riesgo, incluso en personas con predisposición genética."
+    },
+    {
+      "id": "colesterol",
+      "mito": "El colesterol alto se debe únicamente a una mala alimentación.",
+      "realidad": "Aproximadamente el 80% del colesterol es producido por el propio hígado. Si bien la dieta influye, la genética juega un papel fundamental. Una persona delgada y con una dieta saludable también puede tener colesterol alto y necesitar tratamiento médico."
+    },
+    {
+      "id": "infarto_leve",
+      "mito": "Un infarto pequeño o 'leve' no es grave.",
+      "realidad": "Cualquier infarto, sin importar su tamaño, es una señal de que el corazón ha sufrido daño. Aumenta significativamente el riesgo de sufrir otro evento cardiovascular en el futuro. Requiere cambios en el estilo de vida y, a menudo, tratamiento médico para prevenir recurrencias."
+    },
+    {
+      "id": "diabetes",
+      "mito": "La diabetes no es una enfermedad tan grave como para preocuparse por el corazón.",
+      "realidad": "La diabetes es uno de los principales factores de riesgo para las enfermedades cardiovasculares. De hecho, dos de cada tres personas con diabetes fallecen por causas cardíacas o accidentes cerebrovasculares. El control de la glucosa es esencial para proteger el corazón."
+    }
+  ]
+}

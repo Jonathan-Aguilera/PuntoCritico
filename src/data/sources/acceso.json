@@ -1,0 +1,97 @@
+{
+  "version": "1.0.0",
+  "fuente_imagenes": "Wikimedia Commons / Wikipedia",
+  "fuente_datos": "DEIS / Ministerio de Salud / SAC / INDEC",
+  "intro": "Durante el último siglo, el acceso a la información sobre salud cardiovascular cambió radicalmente. Pero el número de muertes no.",
+  "linea_tiempo": [
+    {
+      "id": "1920",
+      "anio": "1920",
+      "titulo": "La información era un privilegio",
+      "imagen": {
+        "archivo": "The_old_farmer_and_his_almanack_-_being_some_observations_on_life_and_manners_in_New_England_a_hundred_years_ago_suggested_by_reading_the_earlier_numbers_of_Mr._Robert_B._Thomas's_Farmer's_Almanack,_(14755171466).jpg",
+        "titulo": "The old farmer and his almanack",
+        "autor": "Kittredge, George Lyman / Thomas, Robert Bailey",
+        "fecha": "1920",
+        "fuente": "Wikimedia Commons",
+        "credito": "No known copyright restrictions",
+        "resolucion": "1544 x 2486",
+        "formato": "image/jpeg"
+      },
+      "dato": "La información médica circulaba por almanaques y folletos. Muy poca gente accedía a ella.",
+      "contexto": "La radio recién comenzaba en Argentina. No existía la televisión."
+    },
+    {
+      "id": "1940",
+      "anio": "1940",
+      "titulo": "La radio y las revistas de salud",
+      "imagen": {
+        "archivo": "Collection_of_Vintage_Vacuum_Tube_Radios,_Circa_1940s_&_1950s_(8651944069).jpg",
+        "titulo": "Collection of Vintage Vacuum Tube Radios, Circa 1940s & 1950s",
+        "autor": "Joe Haupt",
+        "fecha": "2013",
+        "fuente": "Wikimedia Commons",
+        "credito": "Creative Commons Attribution-Share Alike 2.0",
+        "resolucion": "2212 x 1947",
+        "formato": "image/jpeg"
+      },
+      "dato": "La radio masificó la información. Se emitían radioconferencias sobre tuberculosis y salud.",
+      "contexto": "La información empezaba a llegar a más gente, pero seguía siendo unidireccional."
+    },
+    {
+      "id": "1960",
+      "anio": "1960-1970",
+      "titulo": "La televisión y la información masiva",
+      "imagen": {
+        "archivo": "Family_watching_television_in_their_home,_c._1958.jpg",
+        "titulo": "Family watching television in their home",
+        "autor": "Evert F. Baumgardner",
+        "fecha": "c. 1958",
+        "fuente": "National Archives and Records Administration (Wikipedia)",
+        "credito": "Public domain",
+        "resolucion": "No especificada",
+        "formato": "image/jpeg"
+      },
+      "dato": "La televisión llegó a millones de hogares. Las campañas de salud podían alcanzar a todos al mismo tiempo.",
+      "contexto": "Por primera vez, el mismo mensaje llegaba a todos. Pero sin interactividad ni verificación."
+    },
+    {
+      "id": "2000",
+      "anio": "2000",
+      "titulo": "Internet en el hogar: la promesa",
+      "imagen": {
+        "archivo": "Muenchen_Schuetzenstr_Coffee_Fellows_1_OG_Internet-Cafe.jpg",
+        "titulo": "Internet-Café en Múnich",
+        "autor": "User:Mattes",
+        "fecha": "2008",
+        "fuente": "Wikimedia Commons",
+        "credito": "Self-photographed",
+        "resolucion": "No especificada",
+        "formato": "image/jpeg"
+      },
+      "dato": "Internet prometió toda la información al alcance de todos. Pero en 2000, solo 2,5 millones de argentinos tenían acceso.",
+      "contexto": "La promesa de democratización chocó con la desigualdad real de acceso."
+    },
+    {
+      "id": "hoy",
+      "anio": "2020s",
+      "titulo": "La paradoja: más información, mismas muertes",
+      "imagen": {
+        "archivo": "Person_with_laptop_and_smartphone.jpg",
+        "titulo": "Persona con laptop y smartphone",
+        "autor": "Shixart1985",
+        "fecha": "2026",
+        "fuente": "Wikimedia Commons",
+        "credito": "Own work",
+        "resolucion": "No especificada",
+        "formato": "image/jpeg"
+      },
+      "dato": "Hoy tenemos más acceso a información que nunca. Pero la mortalidad por infarto no bajó en 10 años.",
+      "contexto": "El 50,5% de los profesionales reportó rechazo a medicamentos por desinformación digital."
+    }
+  ],
+  "cierre": {
+    "frase": "El acceso a la información cambió. El problema, no.",
+    "subtexto": "Hoy sabemos más que nunca. Y aún así, seguimos muriendo de lo mismo."
+  }
+}

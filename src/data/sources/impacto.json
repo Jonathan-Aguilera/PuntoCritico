@@ -1,0 +1,102 @@
+{
+  "version": "1.0.0",
+  "fuente_mortalidad": "DEIS - Ministerio de Salud de la Nación",
+  "fuente_gasto": "Ministerio de Salud - Dirección Nacional de Economía de la Salud",
+  "fuente_recursos": "SAC - Registro RENACER-CV",
+  "fuente_confianza": "Ipsos / UADE CIS / Cruz Roja Argentina",
+  "anio_datos": "2018-2022",
+  "cards": [
+    {
+      "id": "impacto_sociocultural",
+      "titulo": "Impacto socio-cultural",
+      "subtitulo": "Muertes por enfermedades cardiovasculares",
+      "tipo": "grafico_evolucion",
+      "descripcion": "Las enfermedades del sistema circulatorio son la primera causa de muerte en Argentina. Entre 2018 y 2022, causaron más de 500.000 muertes.",
+      "datos": {
+        "mortalidad_por_anio": {
+          "2018": 95826,
+          "2019": 97264,
+          "2020": 97231,
+          "2021": 107403,
+          "2022": 110062
+        },
+        "desglose_2022": {
+          "insuficiencia_cardiaca": 28418,
+          "enfermedades_isquemicas": 24639,
+          "enfermedades_cerebrovasculares": 18564,
+          "enfermedades_hipertensivas": 8727,
+          "otras": 29714
+        },
+        "porcentaje_del_total": 27.7,
+        "nota": "En 2022 representaron el 27,7% de todas las muertes del país."
+      }
+    },
+    {
+      "id": "gasto_sistema",
+      "titulo": "Gasto del sistema",
+      "subtitulo": "Evolución del gasto en salud",
+      "tipo": "grafico_evolucion",
+      "descripcion": "El gasto en salud en Argentina se mantuvo entre el 10% y el 11% del PBI entre 2017 y 2022. En 2022, el gasto privado representó el 41,8% del total.",
+      "datos": {
+        "gasto_como_pbi": {
+          "2017": 10.3,
+          "2018": 10.3,
+          "2019": 10.1,
+          "2020": 10.7,
+          "2021": 11.1,
+          "2022": 10.5
+        },
+        "composicion_2022": {
+          "publico": 26.3,
+          "seguridad_social": 31.9,
+          "privado": 41.8
+        },
+        "gasto_bolsillo_hogares": 64.5,
+        "nota": "El gasto de bolsillo representó el 64,5% del gasto total en salud de los hogares (ENGHo 2017-2018)."
+      }
+    },
+    {
+      "id": "paradoja_inversion",
+      "titulo": "La paradoja de la inversión",
+      "subtitulo": "Recursos vs. necesidad",
+      "tipo": "comparacion",
+      "descripcion": "Argentina tiene una densidad de cardiólogos tres veces mayor a la recomendada, pero concentrada en Buenos Aires. La rehabilitación cardiovascular está ausente en la mayoría del territorio.",
+      "datos": {
+        "cardiologos_por_millon": 195,
+        "cardiologos_optimo_oms": 43,
+        "centros_rehabilitacion_total": 74,
+        "concentracion_caba_ba": 69.4,
+        "centros_por_region": {
+          "CABA y Buenos Aires": 41,
+          "Centro": 6,
+          "Cuyo": 4,
+          "Patagonia": 4,
+          "NOA": 3,
+          "NEA": 1
+        },
+        "pacientes_promedio_por_centro": 278,
+        "nota": "La relación óptima recomendada es de 43 cardiólogos por millón de habitantes. Argentina tiene 195, pero el 51% se concentra en CABA y Buenos Aires."
+      }
+    },
+    {
+      "id": "erosion_confianza",
+      "titulo": "Erosión de la confianza",
+      "subtitulo": "Percepción y desinformación",
+      "tipo": "numero_porcentaje",
+      "descripcion": "La desinformación no solo mata: rompe la relación entre la gente y el sistema de salud. El 50,5% de los profesionales reportó rechazo a estatinas por información digital negativa.",
+      "datos": {
+        "rechazo_estatinas_por_desinformacion": 50.5,
+        "percepcion_aumento_rechazo": 66.6,
+        "confianza_sistema_salud": 55,
+        "calificacion_sistema_bueno": 44,
+        "caida_desde_2018": -14,
+        "no_puede_pagar_buena_atencion": 82,
+        "expuestos_mensajes_anti_vacuna": 68,
+        "desarrollo_dudas_por_mensajes": 40,
+        "confianza_autoridades_sin_afectacion": 69,
+        "confianza_autoridades_con_dudas": 31,
+        "nota": "El 82% de los argentinos considera que muchas personas no pueden permitirse una buena atención médica. La confianza institucional opera como factor protector contra la desinformación."
+      }
+    }
+  ]
+}

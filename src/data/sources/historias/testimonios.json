@@ -1,0 +1,62 @@
+{
+  "version": "1.0.0",
+  "fuente": "Comunidad de la Federación Argentina de Cardiología",
+  "fuente_url": "https://www.fac.org.ar/",
+  "nota": "Testimonios anónimos de pacientes. Los nombres son de uso público en la fuente original. Fragmentos citados textualmente.",
+  "testimonios": [
+    {
+      "id": "celina",
+      "nombre": "Celina",
+      "edad": 37,
+      "titulo": "Una nueva vida, una nueva oportunidad",
+      "fragmento": "Me implantaron un cardiodesfibrilador... a mis 33 años. Agradezco porque me dio una nueva vida.",
+      "recomendacion": "Controles anuales, alimentación saludable y ejercicio regular diario.",
+      "tema": "trasplante_cardiaco"
+    },
+    {
+      "id": "flavia",
+      "nombre": "Flavia",
+      "edad": 40,
+      "titulo": "El corazón amenazado post embarazo",
+      "fragmento": "No me imaginaba que tan joven podía tener problemas de corazón y habiendo sido mamá.",
+      "recomendacion": "Controles durante todo el embarazo, especialmente en el puerperio. Escuchar al cuerpo.",
+      "tema": "insuficiencia_cardiaca_puerperio"
+    },
+    {
+      "id": "marianela",
+      "nombre": "Marianela",
+      "edad": 41,
+      "titulo": "Al corazón le falta aire",
+      "fragmento": "Como era jovencita, nunca pensé que podía tener problemas en el corazón.",
+      "recomendacion": "Salir todos los días a caminar y consultar si sienten algo que les molesta.",
+      "tema": "pericardio"
+    },
+    {
+      "id": "delia",
+      "nombre": "Delia",
+      "edad": 92,
+      "titulo": "Sacá al corazón a caminar",
+      "fragmento": "Mi error fue esperar tanto tiempo. Les recomiendo que no dejen de caminar y que se hagan tratar.",
+      "recomendacion": "No postergar la consulta. Mantenerse activa y en movimiento.",
+      "tema": "bypass"
+    },
+    {
+      "id": "silvia",
+      "nombre": "Silvia",
+      "edad": 68,
+      "titulo": "Del sillón al maratón",
+      "fragmento": "Cambié las pantuflas por las zapatillas de running... el sillón por el maratón.",
+      "recomendacion": "Tomar responsabilidad por la propia salud: alimentación, ejercicio y dejar hábitos nocivos.",
+      "tema": "cambio_de_vida"
+    },
+    {
+      "id": "laura",
+      "nombre": "Laura",
+      "edad": 60,
+      "titulo": "La charla que cambió su vida para siempre",
+      "fragmento": "Después de una charla reveladora con su cardióloga, evaluando cómo el estrés impactaba en su salud.",
+      "recomendacion": "El estrés es un factor de riesgo cardiovascular que también debe abordarse.",
+      "tema": "estres_cronico"
+    }
+  ]
+}

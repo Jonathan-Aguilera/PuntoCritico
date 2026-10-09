@@ -1,18 +1,23 @@
 import ViewContainer from '../components/ui/ViewContainer'
+import RiesgoCard from '../components/riesgo/RiesgoCard'
+import { getFactores } from '../data/services/riesgos.service'
 
 export default function Riesgos() {
+  const factores = getFactores()
+
   return (
     <ViewContainer title="Riesgos" color="red">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris.
+      <p className="text-lg mb-8 text-slate-900">
+        ¿Sabías que la mayoría de los problemas del corazón se desarrollan en
+        silencio? Estos son los factores que más influyen en la salud
+        cardiovascular de los argentinos.
       </p>
-      <p>
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident.
-      </p>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {factores.map((factor) => (
+          <RiesgoCard key={factor.id} factor={factor} accentColor="#dc2626" />
+        ))}
+      </div>
     </ViewContainer>
   )
 }

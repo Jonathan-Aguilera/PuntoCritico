@@ -1,0 +1,146 @@
+{
+  "version": "1.0.0",
+  "fuente": "OMS / SAC / American Heart Association / Ministerio de Salud",
+  "preguntas": [
+    {
+      "id": "q1",
+      "pregunta": "¿Cuál es la primera causa de muerte en Argentina?",
+      "opciones": ["Los accidentes de tránsito", "Las enfermedades del corazón", "El cáncer de pulmón"],
+      "correcta": 1,
+      "explicacion": "Las enfermedades cardiovasculares son la primera causa de muerte en el país, con más del 27% del total."
+    },
+    {
+      "id": "q2",
+      "pregunta": "¿Cuántos minutos de actividad física se recomiendan por semana para un adulto?",
+      "opciones": ["30 minutos", "90 minutos", "150 minutos"],
+      "correcta": 2,
+      "explicacion": "La OMS recomienda al menos 150 minutos de actividad moderada por semana."
+    },
+    {
+      "id": "q3",
+      "pregunta": "¿Cuánta sal se recomienda consumir por día?",
+      "opciones": ["Menos de 5 gramos (una cucharadita)", "Menos de 15 gramos", "No hay límite recomendado"],
+      "correcta": 0,
+      "explicacion": "La OMS recomienda menos de 5 gramos diarios. Los argentinos consumen en promedio el doble."
+    },
+    {
+      "id": "q4",
+      "pregunta": "¿La hipertensión arterial suele presentar síntomas visibles?",
+      "opciones": ["Sí, siempre", "Solo en personas mayores", "No, suele ser asintomática"],
+      "correcta": 2,
+      "explicacion": "Se la llama 'asesino silencioso' porque no da síntomas hasta que ya causó daño."
+    },
+    {
+      "id": "q5",
+      "pregunta": "¿Qué porcentaje de los infartos se pueden prevenir con hábitos saludables?",
+      "opciones": ["Alrededor del 20%", "Alrededor del 50%", "Alrededor del 80%"],
+      "correcta": 2,
+      "explicacion": "Hasta el 80% de los eventos cardiovasculares prematuros son prevenibles."
+    },
+    {
+      "id": "q6",
+      "pregunta": "¿Cuántas porciones diarias de frutas y verduras se recomiendan?",
+      "opciones": ["2 porciones", "5 porciones", "10 porciones"],
+      "correcta": 1,
+      "explicacion": "Se recomiendan al menos 5 porciones diarias. Solo el 6% de los argentinos las cumple."
+    },
+    {
+      "id": "q7",
+      "pregunta": "¿Cuál es la presión arterial considerada normal en un adulto?",
+      "opciones": ["120/80 mmHg", "150/100 mmHg", "90/60 mmHg"],
+      "correcta": 0,
+      "explicacion": "120/80 mmHg es el valor de referencia. Por encima de 140/90 se considera hipertensión."
+    },
+    {
+      "id": "q8",
+      "pregunta": "¿El consumo de alcohol en pequeñas cantidades es bueno para el corazón?",
+      "opciones": ["Sí, especialmente el vino tinto", "No, cualquier cantidad conlleva riesgos", "Solo si es cerveza"],
+      "correcta": 1,
+      "explicacion": "La evidencia reciente desmintió el mito del vino tinto. Cualquier cantidad de alcohol daña el corazón."
+    },
+    {
+      "id": "q9",
+      "pregunta": "¿A qué edad conviene hacerse el primer control de presión arterial?",
+      "opciones": ["Después de los 50 años", "A partir de los 18 años", "Solo si hay síntomas"],
+      "correcta": 1,
+      "explicacion": "Se recomienda controlar la presión desde la adultez joven, incluso sin síntomas."
+    },
+    {
+      "id": "q10",
+      "pregunta": "¿Cuál es la diferencia principal entre sobrepeso y obesidad?",
+      "opciones": ["El sobrepeso es menos grave", "El IMC (índice de masa corporal)", "La edad de la persona"],
+      "correcta": 1,
+      "explicacion": "Se diferencian por el IMC: sobrepeso entre 25-30, obesidad a partir de 30."
+    },
+    {
+      "id": "q11",
+      "pregunta": "¿El estrés crónico afecta la salud del corazón?",
+      "opciones": ["No, es solo mental", "Sí, eleva la presión y favorece placas", "Solo en personas mayores"],
+      "correcta": 1,
+      "explicacion": "El cortisol sostenido eleva la presión y favorece la formación de placas en las arterias."
+    },
+    {
+      "id": "q12",
+      "pregunta": "¿Qué tipo de grasa es más perjudicial para el corazón?",
+      "opciones": ["Grasas trans", "Grasas monoinsaturadas", "Grasas del pescado"],
+      "correcta": 0,
+      "explicacion": "Las grasas trans (presentes en ultraprocesados) son las más dañinas para el sistema cardiovascular."
+    },
+    {
+      "id": "q13",
+      "pregunta": "¿Cuántas horas de sueño se recomiendan para una buena salud cardiovascular?",
+      "opciones": ["4-5 horas", "7-9 horas", "Más de 10 horas"],
+      "correcta": 1,
+      "explicacion": "Dormir entre 7 y 9 horas protege el corazón. El déficit crónico aumenta el riesgo."
+    },
+    {
+      "id": "q14",
+      "pregunta": "¿La diabetes aumenta el riesgo de enfermedad cardiovascular?",
+      "opciones": ["No, son problemas separados", "Sí, duplica o triplica el riesgo", "Solo en adultos mayores"],
+      "correcta": 1,
+      "explicacion": "La diabetes multiplica por 2 o 3 el riesgo de infarto y ACV."
+    },
+    {
+      "id": "q15",
+      "pregunta": "¿Dejar de fumar a los 50 años sigue siendo beneficioso?",
+      "opciones": ["Ya es tarde", "Sí, reduce el riesgo desde el primer día", "Solo sirve si se deja antes de los 30"],
+      "correcta": 1,
+      "explicacion": "Nunca es tarde. Los beneficios empiezan a los 20 minutos y el riesgo de infarto se reduce a la mitad en un año."
+    },
+    {
+      "id": "q16",
+      "pregunta": "¿Cuál es el tipo de grasa abdominal más peligrosa?",
+      "opciones": ["La subcutánea", "La visceral (profunda)", "Ambas son iguales"],
+      "correcta": 1,
+      "explicacion": "La grasa visceral rodea los órganos y libera sustancias inflamatorias que dañan el corazón."
+    },
+    {
+      "id": "q17",
+      "pregunta": "¿El colesterol alto siempre se debe a una mala alimentación?",
+      "opciones": ["Sí, siempre", "No, el 80% lo produce el hígado", "Solo en personas obesas"],
+      "correcta": 1,
+      "explicacion": "Aproximadamente el 80% del colesterol lo produce el propio hígado. La genética influye."
+    },
+    {
+      "id": "q18",
+      "pregunta": "¿Qué es la fibrilación auricular?",
+      "opciones": ["Una arritmia cardíaca", "Un tipo de infarto", "Una enfermedad pulmonar"],
+      "correcta": 0,
+      "explicacion": "Es la arritmia más frecuente. Aumenta 5 veces el riesgo de ACV si no se trata."
+    },
+    {
+      "id": "q19",
+      "pregunta": "¿Caminar 30 minutos al día reduce el riesgo cardiovascular?",
+      "opciones": ["Solo si es intenso", "Sí, reduce el riesgo de enfermedad coronaria", "No, hay que correr"],
+      "correcta": 1,
+      "explicacion": "Caminar 30 minutos diarios reduce el riesgo de enfermedad coronaria alrededor del 19%."
+    },
+    {
+      "id": "q20",
+      "pregunta": "¿Los antecedentes familiares determinan inevitablemente el destino cardíaco?",
+      "opciones": ["Sí, es inevitable", "No, el estilo de vida modula el riesgo", "Solo si son de primer grado"],
+      "correcta": 1,
+      "explicacion": "La genética 'carga el arma', pero el estilo de vida 'aprieta el gatillo'. Los hábitos reducen el riesgo."
+    }
+  ]
+}

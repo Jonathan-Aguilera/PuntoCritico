@@ -1,0 +1,86 @@
+{
+  "version": "1.0.0",
+  "fuente_principal": "OMS / SAC / Ministerio de Salud de la Nación / AHA",
+  "intro": "Después de ver el problema, hablemos de la solución. No hace falta un gimnasio ni una dieta estricta: pequeños cambios diarios, al alcance de cualquiera, marcan una diferencia enorme. La prevención está en tus manos.",
+  "categorias": [
+    {
+      "id": "comidas",
+      "titulo": "Comidas",
+      "icono": "utensils",
+      "consejos": [
+        {
+          "id": "sal",
+          "texto": "Reducí la sal a menos de 5 gramos por día (una cucharadita).",
+          "evidencia": "La OMS recomienda esta medida para prevenir la hipertensión y reducir el riesgo de enfermedades cardíacas y accidentes cerebrovasculares.",
+          "fuente": "OMS"
+        },
+        {
+          "id": "frutas_verduras",
+          "texto": "Sumá al menos 5 porciones de frutas y verduras al día.",
+          "evidencia": "Las personas con dietas ricas en frutas y verduras tienen un riesgo significativamente menor de obesidad, enfermedades cardíacas y diabetes.",
+          "fuente": "OMS"
+        },
+        {
+          "id": "grasas",
+          "texto": "Reemplazá las grasas saturadas y trans por grasas saludables (frutos secos, palta, aceite de oliva).",
+          "evidencia": "La evidencia más sólida muestra que la dieta mediterránea reduce eventos cardiovasculares mayores.",
+          "fuente": "American College of Cardiology"
+        }
+      ]
+    },
+    {
+      "id": "ejercicio",
+      "titulo": "Ejercicio",
+      "icono": "walking",
+      "consejos": [
+        {
+          "id": "caminar",
+          "texto": "Caminá 30 minutos al día, 5 días a la semana.",
+          "evidencia": "Caminar 30 minutos diarios reduce el riesgo de enfermedad coronaria en un 19% (metaanálisis).",
+          "fuente": "European Journal of Epidemiology"
+        },
+        {
+          "id": "actividad_moderada",
+          "texto": "Acumulá al menos 150 minutos de actividad moderada por semana.",
+          "evidencia": "La OMS recomienda esta cantidad mínima para todos los adultos.",
+          "fuente": "OMS"
+        },
+        {
+          "id": "empezar_ligero",
+          "texto": "Si recién empezás, comenzá con caminatas cortas y aumentá de a poco.",
+          "evidencia": "Los programas que incluyen actividades como caminar son efectivos y seguros para comenzar.",
+          "fuente": "Ministerio de Salud de Paraguay"
+        }
+      ]
+    },
+    {
+      "id": "habitos",
+      "titulo": "Hábitos",
+      "icono": "heart",
+      "consejos": [
+        {
+          "id": "tabaco",
+          "texto": "Dejá de fumar. Los beneficios empiezan a los 20 minutos.",
+          "evidencia": "A los 20 minutos baja la presión y el ritmo cardíaco. Al año, el riesgo de enfermedad coronaria se reduce a la mitad.",
+          "fuente": "OMS"
+        },
+        {
+          "id": "alcohol",
+          "texto": "Evitá el consumo de alcohol. No hay un nivel 'seguro' para el corazón.",
+          "evidencia": "El consumo de alcohol eleva la presión arterial y añade calorías vacías.",
+          "fuente": "Ministerio de Salud de Argentina"
+        },
+        {
+          "id": "controles",
+          "texto": "Hacete controles periódicos de presión, colesterol y glucemia.",
+          "evidencia": "La detección temprana de factores de riesgo es clave para prevenir eventos cardiovasculares.",
+          "fuente": "Sociedad Argentina de Cardiología"
+        }
+      ]
+    }
+  ],
+  "cierre": {
+    "frase": "No se trata de ser perfecto. Se trata de empezar.",
+    "subtexto": "Cada paso, cada comida, cada decisión cuenta. Tu corazón lo va a notar."
+  }
+}

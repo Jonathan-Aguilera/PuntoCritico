@@ -32,19 +32,21 @@ export default function Header() {
 
   return (
     <header className="bg-amber-950 text-amber-50 shadow-lg relative z-50 shrink-0">
-      {/* Padding vertical aumenta con el tamaño de pantalla */}
-      <div className="max-w-7xl mx-auto px-4 py-4 xl:py-5 flex items-center justify-between gap-4">
+
+      {/* Contenedor principal */}
+      <div className="max-w-7xl mx-auto px-4 py-2 xl:py-3 flex items-center justify-between gap-4">
+
         {/* Logo */}
         <Link
           to="/"
           onClick={() => setIsOpen(false)}
-          className="text-lg xl:text-xl font-bold tracking-tight hover:text-amber-300 transition shrink-0"
+          className="text-base xl:text-lg font-bold tracking-tight hover:text-amber-300 transition shrink-0"
         >
           Punto Crítico
         </Link>
 
         {/* Nav desktop */}
-        <nav className="hidden lg:flex flex-wrap items-center gap-1.5 xl:gap-2">
+        <nav className="hidden lg:flex flex-wrap items-center gap-1 xl:gap-1.5">
           {navItems.map((item) => (
             <NavLink
               key={item.to}
@@ -52,13 +54,12 @@ export default function Header() {
               onMouseEnter={() => handlePreload(item.to)}
               onFocus={() => handlePreload(item.to)}
               className={({ isActive }) =>
-                `px-3 py-2 text-sm rounded transition
-                 xl:px-4 xl:py-2.5 xl:text-base
-                 ${
-                   isActive
-                     ? 'bg-amber-700 text-white font-semibold'
-                     : 'text-amber-100 hover:bg-amber-800'
-                 }`
+                `px-2.5 py-1.5 text-xs rounded transition
+           xl:px-3 xl:py-2 xl:text-sm
+           ${isActive
+                  ? 'bg-amber-700 text-white font-semibold'
+                  : 'text-amber-100 hover:bg-amber-800'
+                }`
               }
             >
               {item.label}
@@ -66,14 +67,14 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Botón hamburguesa */}
+        {/* Botón hamburguesa: un poco más chico también */}
         <button
           type="button"
           onClick={() => setIsOpen((prev) => !prev)}
           aria-expanded={isOpen}
           aria-controls="mobile-nav"
           aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
-          className="lg:hidden p-2 rounded hover:bg-amber-800 transition"
+          className="lg:hidden p-1.5 rounded hover:bg-amber-800 transition"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -116,10 +117,9 @@ export default function Header() {
                   onClick={() => setIsOpen(false)}
                   onTouchStart={() => handlePreload(item.to)}
                   className={({ isActive }) =>
-                    `block px-4 py-3 text-base transition ${
-                      isActive
-                        ? 'bg-amber-700 text-white font-semibold'
-                        : 'text-amber-100 hover:bg-amber-800'
+                    `block px-4 py-3 text-base transition ${isActive
+                      ? 'bg-amber-700 text-white font-semibold'
+                      : 'text-amber-100 hover:bg-amber-800'
                     }`
                   }
                 >
