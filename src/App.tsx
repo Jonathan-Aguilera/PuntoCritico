@@ -7,6 +7,7 @@ import MainLayout from './layouts/MainLayout'
 import PageTransition from './components/ui/PageTransition'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
+import MapaTest from './pages/MapaTest'
 import { checkDatabaseConnectionOnce } from './services/dbTest'
 
 const Riesgos = lazyWithPreload(() => import('./pages/Riesgos'))
@@ -55,6 +56,7 @@ function AnimatedRoutes() {
           {/* Catch-all: cualquier ruta no listada arriba cae aquí */}
           <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
         </Route>
+        <Route path="/mapa-test" element={<MapaTest />} />
       </Routes>
     </AnimatePresence>
   )

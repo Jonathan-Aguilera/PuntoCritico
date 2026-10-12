@@ -8,7 +8,7 @@ interface FavaloroHeroProps {
 
 export default function FavaloroHero({ data }: FavaloroHeroProps) {
   return (
-    <section className="relative bg-gradient-to-b from-slate-900 via-slate-900 to-purple-950 rounded-2xl overflow-hidden shadow-2xl mb-12">
+    <section className="relative bg-linear-to-b from-slate-900 via-slate-900 to-purple-950 rounded-2xl overflow-hidden shadow-2xl mb-12">
 
       {/* Textura sutil de fondo */}
       <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
@@ -45,12 +45,12 @@ export default function FavaloroHero({ data }: FavaloroHeroProps) {
         <div className="flex justify-center mb-10">
           <div className="relative">
             {/* Marco decorativo dorado */}
-            <div className="absolute -inset-1.5 bg-gradient-to-br from-amber-300/40 via-amber-500/20 to-amber-300/40 rounded-lg blur-sm" />
+            <div className="absolute -inset-1.5 bg-linear-to-br from-amber-300/40 via-amber-500/20 to-amber-300/40 rounded-lg blur-sm" />
             <div className="relative bg-slate-800 p-2 rounded-lg shadow-2xl">
               <img
                 src={favaloroRetrato}
                 alt={data.imagen_retrato.titulo}
-                className="w-56 md:w-72 rounded object-cover grayscale-[15%]"
+                className="w-56 md:w-72 rounded object-cover grayscale-15"
               />
             </div>
           </div>

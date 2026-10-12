@@ -30,7 +30,7 @@ export default function ViewContainer({
   const { bg, card, border } = colorMap[color]
 
   return (
-    <div className={`size-full ${bg} overflow-auto`}>
+    <div className={`size-full ${bg}`}>
       <div className="max-w-7xl mx-auto px-6 py-8 md:px-9 md:py-12 xl:px-6">
         <div className={`${card} rounded-xl shadow-lg p-6 md:p-10`}>
           <h1 className="text-3xl md:text-4xl font-bold text-center text-slate-900">

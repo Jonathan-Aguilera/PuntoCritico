@@ -40,7 +40,7 @@ export default function PageTransition({ children }: PageTransitionProps) {
       initial="initial"
       animate="animate"
       exit="exit"
-      className="absolute inset-0 w-full h-full overflow-hidden"
+      className="w-full"
     >
       {children}
     </motion.div>
