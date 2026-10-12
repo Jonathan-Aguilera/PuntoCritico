@@ -1,16 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap');
 @import "tailwindcss";
 
-/* ─── Ocultar scrollbar (mantiene funcionalidad de scroll) ─── */
+/* ─── Fuente global ─── */
+body {
+  font-family: 'Orbitron', system-ui, sans-serif;
+}
+
+/* ─── Ocultar scrollbar ─── */
 html, body {
-  scrollbar-width: none;      /* Firefox */
-  -ms-overflow-style: none;   /* IE / Edge antiguos */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 html::-webkit-scrollbar,
 body::-webkit-scrollbar,
 *::-webkit-scrollbar {
-  display: none;              /* Chrome / Safari / Edge nuevo */
+  display: none;
   width: 0;
   height: 0;
 }

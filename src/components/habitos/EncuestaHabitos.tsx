@@ -1,8 +1,18 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
-import { getPreguntas, shuffle, type Pregunta } from '../../data/services/habitos.service'
+import {
+  getPreguntas,
+  shuffle,
+  type Pregunta,
+} from '../../data/services/habitos.service'
 
-type Fase = 'intro' | 'pregunta' | 'resultado' | 'compartir' | 'gracias' | 'rechazado'
+type Fase =
+  | 'intro'
+  | 'pregunta'
+  | 'resultado'
+  | 'compartir'
+  | 'gracias'
+  | 'rechazado'
 
 const TOTAL_PREGUNTAS = 5
 
@@ -13,7 +23,6 @@ export default function EncuestaHabitos() {
   const [seleccion, setSeleccion] = useState<number | null>(null)
   const [respuestasCorrectas, setRespuestasCorrectas] = useState(0)
 
-  // Inicia la encuesta
   const iniciar = () => {
     const seleccionadas = shuffle(getPreguntas()).slice(0, TOTAL_PREGUNTAS)
     setPreguntas(seleccionadas)
@@ -23,16 +32,14 @@ export default function EncuestaHabitos() {
     setFase('pregunta')
   }
 
-  // Al hacer click en una opción
   const responder = (i: number) => {
-    if (seleccion !== null) return // ya respondió, evita doble click
+    if (seleccion !== null) return
     setSeleccion(i)
     if (i === preguntas[indice].correcta) {
       setRespuestasCorrectas((prev) => prev + 1)
     }
   }
 
-  // Avanza a la siguiente pregunta o al resultado
   const siguiente = () => {
     if (indice + 1 < preguntas.length) {
       setIndice(indice + 1)
@@ -42,15 +49,19 @@ export default function EncuestaHabitos() {
     }
   }
 
-  const porcentaje = Math.round((respuestasCorrectas / TOTAL_PREGUNTAS) * 100)
+  const porcentaje = Math.round(
+    (respuestasCorrectas / TOTAL_PREGUNTAS) * 100
+  )
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-10">
-      {/* Barra superior con título fijo */}
-      <div className="bg-emerald-700 text-white px-6 py-4 flex items-center justify-between">
-        <h2 className="font-bold text-lg">¿Cuánto sabés sobre tu corazón?</h2>
+    <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-xl overflow-hidden mb-16">
+      {/* Barra superior con título */}
+      <div className="bg-emerald-500/15 border-b border-emerald-400/20 px-6 py-4 flex items-center justify-between">
+        <h2 className="font-bold text-lg text-amber-300">
+          ¿Cuánto sabés sobre tu corazón?
+        </h2>
         {fase === 'pregunta' && (
-          <span className="text-sm font-medium">
+          <span className="text-sm font-medium text-slate-300">
             {indice + 1} / {TOTAL_PREGUNTAS}
           </span>
         )}
@@ -68,13 +79,13 @@ export default function EncuestaHabitos() {
               transition={{ duration: 0.25 }}
               className="text-center"
             >
-              <p className="text-slate-700 mb-6 leading-relaxed">
+              <p className="text-slate-200 mb-6 leading-relaxed">
                 5 preguntas rápidas. Sin registros, sin datos personales. Solo
                 para saber cuánto sabés sobre prevención cardiovascular.
               </p>
               <button
                 onClick={iniciar}
-                className="px-8 py-3 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition shadow-md"
+                className="px-8 py-3 bg-emerald-500 text-white font-semibold rounded-lg hover:bg-emerald-400 transition shadow-md"
               >
                 Comenzar encuesta
               </button>
@@ -90,7 +101,7 @@ export default function EncuestaHabitos() {
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.25 }}
             >
-              <p className="text-lg md:text-xl font-semibold text-slate-900 mb-6">
+              <p className="text-lg md:text-xl font-semibold text-white mb-6">
                 {preguntas[indice].pregunta}
               </p>
 
@@ -104,13 +115,15 @@ export default function EncuestaHabitos() {
                     'w-full text-left px-4 py-3 rounded-lg border-2 transition font-medium text-sm md:text-base '
 
                   if (!mostrar) {
-                    clase += 'border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 text-slate-800'
+                    clase +=
+                      'border-white/15 hover:border-emerald-400 hover:bg-emerald-500/10 text-slate-200'
                   } else if (esCorrecta) {
-                    clase += 'border-emerald-500 bg-emerald-50 text-emerald-900'
+                    clase +=
+                      'border-emerald-400 bg-emerald-500/15 text-emerald-200'
                   } else if (esSeleccionada) {
-                    clase += 'border-red-400 bg-red-50 text-red-900'
+                    clase += 'border-red-400 bg-red-500/15 text-red-200'
                   } else {
-                    clase += 'border-slate-200 text-slate-500 opacity-60'
+                    clase += 'border-white/10 text-slate-500 opacity-60'
                   }
 
                   return (
@@ -130,9 +143,9 @@ export default function EncuestaHabitos() {
                 <motion.div
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-slate-50 border-l-4 border-emerald-500 p-4 rounded mb-5"
+                  className="bg-white/5 border-l-4 border-emerald-400 p-4 rounded mb-5"
                 >
-                  <p className="text-sm text-slate-700 leading-relaxed">
+                  <p className="text-sm text-slate-200 leading-relaxed">
                     {preguntas[indice].explicacion}
                   </p>
                 </motion.div>
@@ -142,9 +155,11 @@ export default function EncuestaHabitos() {
                 <div className="text-right">
                   <button
                     onClick={siguiente}
-                    className="px-6 py-2.5 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition"
+                    className="px-6 py-2.5 bg-emerald-500 text-white font-semibold rounded-lg hover:bg-emerald-400 transition"
                   >
-                    {indice + 1 < TOTAL_PREGUNTAS ? 'Siguiente →' : 'Ver resultado'}
+                    {indice + 1 < TOTAL_PREGUNTAS
+                      ? 'Siguiente →'
+                      : 'Ver resultado'}
                   </button>
                 </div>
               )}
@@ -161,24 +176,27 @@ export default function EncuestaHabitos() {
               transition={{ duration: 0.3 }}
               className="text-center"
             >
-              <p className="text-sm uppercase tracking-wider text-slate-500 mb-2">
+              <p className="text-sm uppercase tracking-wider text-slate-400 mb-2">
                 Tu resultado
               </p>
-              <p className="text-6xl md:text-7xl font-bold text-emerald-700 mb-3">
+              <p className="text-6xl md:text-7xl font-bold text-emerald-300 mb-3">
                 {porcentaje}%
               </p>
-              <p className="text-slate-700 mb-2">
+              <p className="text-slate-200 mb-2">
                 Respondiste correctamente{' '}
-                <span className="font-bold">{respuestasCorrectas}</span> de{' '}
-                <span className="font-bold">{TOTAL_PREGUNTAS}</span>.
+                <span className="font-bold text-white">
+                  {respuestasCorrectas}
+                </span>{' '}
+                de{' '}
+                <span className="font-bold text-white">{TOTAL_PREGUNTAS}</span>.
               </p>
-              <p className="text-sm text-slate-500 italic mb-6 max-w-md mx-auto">
+              <p className="text-sm text-slate-400 italic mb-6 max-w-md mx-auto">
                 No es una evaluación. Es una excusa para hablar de lo que
                 importa.
               </p>
               <button
                 onClick={() => setFase('compartir')}
-                className="px-6 py-2.5 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition"
+                className="px-6 py-2.5 bg-emerald-500 text-white font-semibold rounded-lg hover:bg-emerald-400 transition"
               >
                 Continuar
               </button>
@@ -194,23 +212,23 @@ export default function EncuestaHabitos() {
               exit={{ opacity: 0, y: -10 }}
               className="text-center"
             >
-              <p className="text-slate-800 font-semibold text-lg mb-3">
+              <p className="text-white font-semibold text-lg mb-3">
                 ¿Nos compartís tus respuestas?
               </p>
-              <p className="text-sm text-slate-600 mb-6 max-w-md mx-auto leading-relaxed">
+              <p className="text-sm text-slate-300 mb-6 max-w-md mx-auto leading-relaxed">
                 Son 100% anónimas. Solo nos ayudan a entender cuánto se sabe
                 sobre prevención cardiovascular en Argentina.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <button
                   onClick={() => setFase('gracias')}
-                  className="px-6 py-2.5 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition"
+                  className="px-6 py-2.5 bg-emerald-500 text-white font-semibold rounded-lg hover:bg-emerald-400 transition"
                 >
                   Sí, compartir
                 </button>
                 <button
                   onClick={() => setFase('rechazado')}
-                  className="px-6 py-2.5 border-2 border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-50 transition"
+                  className="px-6 py-2.5 border-2 border-white/20 text-slate-200 font-semibold rounded-lg hover:bg-white/10 transition"
                 >
                   No, gracias
                 </button>
@@ -227,10 +245,10 @@ export default function EncuestaHabitos() {
               className="text-center py-4"
             >
               <p className="text-2xl mb-2">❤️</p>
-              <p className="text-lg font-semibold text-emerald-700">
+              <p className="text-lg font-semibold text-emerald-300">
                 Gracias por participar
               </p>
-              <p className="text-sm text-slate-500 mt-2">
+              <p className="text-sm text-slate-400 mt-2">
                 Tus respuestas fueron registradas de forma anónima.
               </p>
             </motion.div>
@@ -244,10 +262,10 @@ export default function EncuestaHabitos() {
               animate={{ opacity: 1, scale: 1 }}
               className="text-center py-4"
             >
-              <p className="text-lg font-semibold text-slate-700">
+              <p className="text-lg font-semibold text-slate-200">
                 No te preocupes
               </p>
-              <p className="text-sm text-slate-500 mt-2">
+              <p className="text-sm text-slate-400 mt-2">
                 Tus respuestas no fueron guardadas. Podés seguir explorando.
               </p>
             </motion.div>

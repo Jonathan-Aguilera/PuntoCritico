@@ -8,10 +8,11 @@ interface FavaloroHeroProps {
 
 export default function FavaloroHero({ data }: FavaloroHeroProps) {
   return (
-    <section className="relative bg-linear-to-b from-slate-900 via-slate-900 to-purple-950 rounded-2xl overflow-hidden shadow-2xl mb-12">
+    <section className="relative bg-gradient-to-b from-slate-900 via-slate-900 to-purple-950 rounded-2xl overflow-hidden shadow-2xl mb-12 border border-white/10">
 
       {/* Textura sutil de fondo */}
-      <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
+      <div
+        className="absolute inset-0 opacity-[0.04] pointer-events-none"
         style={{
           backgroundImage:
             'radial-gradient(circle at 20% 30%, white 1px, transparent 1px), radial-gradient(circle at 70% 60%, white 1px, transparent 1px)',
@@ -20,7 +21,6 @@ export default function FavaloroHero({ data }: FavaloroHeroProps) {
       />
 
       <div className="relative px-6 md:px-12 py-12 md:py-16">
-
         {/* ── Encabezado: "In Memoriam" ── */}
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-3 text-amber-300/80 mb-3">
@@ -44,13 +44,12 @@ export default function FavaloroHero({ data }: FavaloroHeroProps) {
         {/* ── Retrato central enmarcado ── */}
         <div className="flex justify-center mb-10">
           <div className="relative">
-            {/* Marco decorativo dorado */}
-            <div className="absolute -inset-1.5 bg-linear-to-br from-amber-300/40 via-amber-500/20 to-amber-300/40 rounded-lg blur-sm" />
+            <div className="absolute -inset-1.5 bg-gradient-to-br from-amber-300/40 via-amber-500/20 to-amber-300/40 rounded-lg blur-sm" />
             <div className="relative bg-slate-800 p-2 rounded-lg shadow-2xl">
               <img
                 src={favaloroRetrato}
                 alt={data.imagen_retrato.titulo}
-                className="w-56 md:w-72 rounded object-cover grayscale-15"
+                className="w-56 md:w-72 rounded object-cover grayscale-[15%]"
               />
             </div>
           </div>
@@ -90,7 +89,6 @@ export default function FavaloroHero({ data }: FavaloroHeroProps) {
           <p>Retrato: {data.imagen_retrato.credito} — {data.imagen_retrato.licencia}</p>
           <p>Diagrama: {data.imagen_hito.credito} — {data.imagen_hito.licencia}</p>
         </div>
-
       </div>
     </section>
   )

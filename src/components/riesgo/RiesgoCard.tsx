@@ -1,3 +1,4 @@
+import { motion } from 'motion/react'
 import {
   BarChart,
   Bar,
@@ -12,11 +13,15 @@ import type { Factor } from '../../data/services/riesgos.service'
 interface RiesgoCardProps {
   factor: Factor
   accentColor?: string
+  offset?: 'left' | 'right'
+  index?: number
 }
 
 export default function RiesgoCard({
   factor,
-  accentColor = '#dc2626',
+  accentColor = '#7BA8D9',
+  offset = 'left',
+  index = 0,
 }: RiesgoCardProps) {
   const { nombre, mortalidad_asociada, descripcion, prevalencia_por_provincia } =
     factor
@@ -28,15 +33,34 @@ export default function RiesgoCard({
       }))
     : null
 
+  const alignment =
+    offset === 'left'
+      ? 'md:mr-[30%] md:ml-0'
+      : 'md:ml-[30%] md:mr-0'
+
   return (
-    <article className="bg-white rounded-xl shadow-lg p-6 flex flex-col gap-5">
+    <motion.article
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{
+        duration: 0.7,
+        delay: index * 0.15,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+      className={`bg-white/5 backdrop-blur-md border border-white/10 rounded-xl shadow-xl p-6 flex flex-col gap-5 w-full md:w-[70%] ${alignment}`}
+    >
       {/* ── Bloque 1: Información ── */}
       <div>
-        <h3 className="text-2xl font-bold text-slate-900">{nombre}</h3>
-        <p className="text-sm font-medium text-slate-600 mt-1">
+        <h3 className="text-xl md:text-2xl font-bold text-amber-300 mb-1">
+          {nombre}
+        </h3>
+        <p className="text-xs md:text-sm font-medium text-slate-300 mb-3">
           {mortalidad_asociada}
         </p>
-        <p className="text-slate-700 mt-3 leading-relaxed">{descripcion}</p>
+        <p className="text-slate-200 leading-relaxed text-sm md:text-base">
+          {descripcion}
+        </p>
       </div>
 
       {/* ── Bloque 2: Gráfico de provincias ── */}
@@ -47,26 +71,37 @@ export default function RiesgoCard({
               data={chartData}
               margin={{ top: 10, right: 8, left: -18, bottom: 55 }}
             >
-              <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" vertical={false} />
+              <CartesianGrid
+                strokeDasharray="3 3"
+                stroke="rgba(255, 255, 255, 0.08)"
+                vertical={false}
+              />
               <XAxis
                 dataKey="provincia"
                 angle={-55}
                 textAnchor="end"
                 interval={0}
                 height={70}
-                tick={{ fontSize: 10, fill: '#475569' }}
+                tick={{ fontSize: 10, fill: '#cbd5e1' }}
+                axisLine={{ stroke: 'rgba(255, 255, 255, 0.15)' }}
+                tickLine={{ stroke: 'rgba(255, 255, 255, 0.15)' }}
               />
               <YAxis
-                tick={{ fontSize: 10, fill: '#475569' }}
+                tick={{ fontSize: 10, fill: '#cbd5e1' }}
                 unit="%"
+                axisLine={{ stroke: 'rgba(255, 255, 255, 0.15)' }}
+                tickLine={{ stroke: 'rgba(255, 255, 255, 0.15)' }}
               />
               <Tooltip
                 formatter={(value) => [`${value ?? 0}%`, 'Prevalencia']}
                 contentStyle={{
                   borderRadius: '8px',
-                  border: '1px solid #e2e8f0',
+                  border: '1px solid rgba(255, 255, 255, 0.15)',
+                  background: 'rgba(15, 10, 51, 0.95)',
+                  color: '#fff',
                   fontSize: '12px',
                 }}
+                labelStyle={{ color: '#cbd5e1' }}
               />
               <Bar
                 dataKey="valor"
@@ -80,6 +115,6 @@ export default function RiesgoCard({
           </ResponsiveContainer>
         </div>
       )}
-    </article>
+    </motion.article>
   )
 }

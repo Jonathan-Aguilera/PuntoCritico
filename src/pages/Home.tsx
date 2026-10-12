@@ -1,4 +1,10 @@
 import { Link } from 'react-router'
+import Riesgos from './Riesgos'
+import Impacto from './Impacto'
+import Acceso from './Acceso'
+import Habitos from './Habitos'
+import Soluciones from './Soluciones'
+import Historias from './Historias'
 
 export default function Home() {
   return (
@@ -106,6 +112,48 @@ export default function Home() {
           </div>
         </section>
 
+        <section>
+          <Riesgos />
+        </section>
+
+        <section>
+          <Impacto />
+        </section>
+
+        <section>
+          <Acceso />
+        </section>
+
+        <section>
+          <Habitos />
+        </section>
+
+        <section>
+          <Soluciones />
+        </section>
+
+        <section>
+          <Historias />
+        </section>
+
+        <section>
+          {/* CTA al mapa */}
+          <div className="bg-gradient-to-br from-amber-500/20 to-orange-600/20 border border-amber-400/30 px-6 md:px-10 py-8 md:py-10 text-center">
+            <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
+              Explorá los datos por tu cuenta
+            </h3>
+            <p className="text-slate-100 text-sm md:text-base mb-6 max-w-xl mx-auto">
+              Filtrá por provincia, año y factor de riesgo. Encontrá tu
+              propio punto crítico.
+            </p>
+            <Link
+              to="/mapa"
+              className="inline-block px-8 py-3 bg-amber-500 text-slate-900 font-bold rounded-lg hover:bg-amber-400 transition shadow-lg"
+            >
+              Abrir el mapa interactivo →
+            </Link>
+          </div>
+        </section>
       </div>
     </div>
   )
