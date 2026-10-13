@@ -7,15 +7,18 @@ interface PageTransitionProps {
 }
 
 const fullVariants = {
-  initial: { opacity: 0, y: '8%' },
+  initial: {
+    opacity: 0,
+    y: '4%',
+  },
   animate: {
     opacity: 1,
     y: '0%',
-    transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] as const },
+    transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] as const },
   },
   exit: {
     opacity: 0,
-    y: '-8%',
+    y: '-4%',
     transition: { duration: 0.25, ease: [0.7, 0, 0.84, 0] as const },
   },
 }

@@ -12,7 +12,7 @@ export default function Home() {
       <div className="w-full px-4 py-10 md:py-16 flex flex-col gap-8">
 
         {/* ─── Bloque 1: La pregunta ─── */}
-        <section className="w-full max-w-[1200px] mx-auto px-2 md:px-6 py-8 md:py-12 text-center">
+        <section className="w-full max-w-[1400px] mx-auto px-2 md:px-6 py-8 md:py-12 text-center">
           <h1 className="font-['Orbitron'] font-bold leading-[1.15] tracking-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl pt-3 text-center bg-gradient-to-r from-[#7BA8D9] to-[#C8E0FF] bg-clip-text text-transparent">
             ¿Por qué seguimos muriendo de lo que ya sabemos prevenir?
           </h1>
@@ -113,27 +113,27 @@ export default function Home() {
         </section>
 
         <section>
-          <Riesgos />
+          <Riesgos preview />
         </section>
 
         <section>
-          <Impacto />
+          <Impacto preview />
         </section>
 
         <section>
-          <Acceso />
+          <Acceso preview />
         </section>
 
         <section>
-          <Habitos />
+          <Habitos preview />
         </section>
 
         <section>
-          <Soluciones />
+          <Soluciones preview />
         </section>
 
         <section>
-          <Historias />
+          <Historias preview />
         </section>
 
         <section>

@@ -1,23 +1,26 @@
-import { Outlet, useLocation } from 'react-router'
+import { useLocation } from 'react-router'
 import { useRef, useState, useEffect } from 'react'
+import { motion } from 'motion/react'
 import Header from '../components/ui/Header'
 import Footer from '../components/ui/Footer'
 import HudFrame from '../components/ui/HudFrame'
 import ShieldBar from '../components/ui/ShieldBar'
+import AnimatedOutlet from '../components/ui/AnimatedOutlet'
+import { useIntro } from '../contexts/IntroContext'
+import Tutorial from '../components/ui/Tutorial'
 
 export default function MainLayout() {
   const scrollRef = useRef<HTMLElement>(null)
   const location = useLocation()
   const [progress, setProgress] = useState(0)
+  const { introDone } = useIntro()
 
-  // ── Reset al cambiar de ruta ──
   useEffect(() => {
     const el = scrollRef.current
     if (el) el.scrollTop = 0
     setProgress(0)
   }, [location.pathname])
 
-  // ── Medición del scroll ──
   useEffect(() => {
     const el = scrollRef.current
     if (!el) return
@@ -40,14 +43,19 @@ export default function MainLayout() {
     }
   }, [location.pathname])
 
+  const t = (delay: number) => ({
+    duration: 0.7,
+    delay: introDone ? delay : 0,
+    ease: [0.16, 1, 0.3, 1] as const,
+  })
+
   return (
     <div className="h-dvh w-full overflow-hidden relative bg-black">
-
       <div
         className="pointer-events-none absolute inset-0 z-0"
         style={{
           background:
-            'linear-gradient(45deg, #191154 0%, #1C2070 50%, #191154 100%)',
+            'linear-gradient(45deg, #0F0A33 0%, #1C2070 50%, #0F0A33 100%)',
         }}
       />
       <div
@@ -59,36 +67,60 @@ export default function MainLayout() {
       />
 
       <div className="relative z-10 w-full h-full">
-        <HudFrame topCenterSlot={<ShieldBar progress={progress} />}>
+        <HudFrame
+          topCenterSlot={
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: introDone ? 1 : 0, y: introDone ? 0 : -20 }}
+              transition={t(0.3)}
+              className="w-full h-full"
+            >
+              <ShieldBar progress={progress} />
+            </motion.div>
+          }
+        >
           <div className="w-full h-full flex flex-col relative">
-
-            {/* Header */}
-            <div className="relative shrink-0 z-[60]">
+            <motion.div
+              className="relative shrink-0 z-[60]"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: introDone ? 1 : 0, y: introDone ? 0 : -10 }}
+              transition={t(0.4)}
+            >
               <Header progress={progress} />
-            </div>
+            </motion.div>
 
-            {/* Degradado de transición entre header y vista */}
             <div
               className="pointer-events-none absolute left-0 right-0 h-12 z-[55]"
               style={{
-                top: '40px', // altura exacta del header
+                top: '40px',
                 background:
                   'linear-gradient(to bottom, rgba(20, 8, 30, 0.85) 0%, rgba(20, 8, 30, 0.4) 50%, transparent 100%)',
               }}
             />
 
-            <main
+            <motion.main
               ref={scrollRef}
               className="flex-1 relative overflow-y-auto w-full"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: introDone ? 1 : 0 }}
+              transition={t(0.6)}
             >
               <div className="pt-8">
-                <Outlet />
+                <AnimatedOutlet />
               </div>
-            </main>
+            </motion.main>
 
-            <Footer />
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: introDone ? 1 : 0 }}
+              transition={t(0.7)}
+            >
+              <Footer />
+            </motion.div>
           </div>
         </HudFrame>
+        {/* Tutorial (solo primera vez) */}
+        <Tutorial />
       </div>
     </div>
   )

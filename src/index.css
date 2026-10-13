@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap');
 @import "tailwindcss";
 
-/* ─── Fuente global ─── */
+/* ─── Fuente por defecto: system-ui (para párrafos y textos) ─── */
 body {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ─── Orbitron solo para títulos ─── */
+h1, h2, h3, h4, h5, h6 {
   font-family: 'Orbitron', system-ui, sans-serif;
 }
 

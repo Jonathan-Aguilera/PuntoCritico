@@ -13,14 +13,12 @@ import type { Factor } from '../../data/services/riesgos.service'
 interface RiesgoCardProps {
   factor: Factor
   accentColor?: string
-  offset?: 'left' | 'right'
   index?: number
 }
 
 export default function RiesgoCard({
   factor,
   accentColor = '#7BA8D9',
-  offset = 'left',
   index = 0,
 }: RiesgoCardProps) {
   const { nombre, mortalidad_asociada, descripcion, prevalencia_por_provincia } =
@@ -33,26 +31,21 @@ export default function RiesgoCard({
       }))
     : null
 
-  const alignment =
-    offset === 'left'
-      ? 'md:mr-[30%] md:ml-0'
-      : 'md:ml-[30%] md:mr-0'
-
   return (
     <motion.article
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.05 }}
       transition={{
-        duration: 0.7,
-        delay: index * 0.15,
+        duration: 0.5,
+        delay: index * 0.06,
         ease: [0.16, 1, 0.3, 1],
       }}
-      className={`bg-white/5 backdrop-blur-md border border-white/10 rounded-xl shadow-xl p-6 flex flex-col gap-5 w-full md:w-[70%] ${alignment}`}
+      className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl shadow-xl p-6 flex flex-col gap-5 w-full"
     >
       {/* ── Bloque 1: Información ── */}
       <div>
-        <h3 className="text-xl md:text-2xl font-bold text-amber-300 mb-1">
+        <h3 className="text-xl md:text-2xl font-bold text-[#7BA8D9] mb-1">
           {nombre}
         </h3>
         <p className="text-xs md:text-sm font-medium text-slate-300 mb-3">
@@ -108,7 +101,7 @@ export default function RiesgoCard({
                 fill={accentColor}
                 radius={[4, 4, 0, 0]}
                 isAnimationActive
-                animationDuration={800}
+                animationDuration={600}
                 animationEasing="ease-out"
               />
             </BarChart>

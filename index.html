@@ -2,11 +2,61 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="src/assets/logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Punto Crítico</title>
+    <style>
+      /* Splash estático que se ve antes de que React monte */
+      #boot-splash {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: #000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: system-ui, sans-serif;
+        color: white;
+        transition: opacity 0.4s ease;
+      }
+      #boot-splash.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+      #boot-splash h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin: 0 0 1.5rem;
+        letter-spacing: -0.02em;
+      }
+      #boot-splash .bar {
+        width: 180px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+        border-radius: 2px;
+      }
+      #boot-splash .bar::after {
+        content: '';
+        display: block;
+        width: 40%;
+        height: 100%;
+        background: #7BA8D9;
+        animation: boot-slide 1.2s ease-in-out infinite;
+      }
+      @keyframes boot-slide {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(350%); }
+      }
+    </style>
   </head>
   <body>
+    <div id="boot-splash">
+      <h1>Punto Crítico</h1>
+      <div class="bar"></div>
+    </div>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

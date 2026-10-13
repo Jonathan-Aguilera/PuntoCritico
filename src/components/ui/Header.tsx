@@ -2,6 +2,9 @@ import { Link, NavLink } from 'react-router'
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { preloadablePages } from '../../App'
+import { playSfx } from '../../lib/audio'
+import { useSound as useSoundControl } from '../../contexts/SoundContext'
+import logo from '../../assets/logo.png'
 
 const navItems = [
   { to: '/', label: 'Inicio' },
@@ -24,6 +27,7 @@ export default function Header({ progress }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [navOpen, setNavOpen] = useState(false)
   const navRef = useRef<HTMLDivElement>(null)
+  const { sfxEnabled } = useSoundControl()
 
   void progress
 
@@ -32,6 +36,15 @@ export default function Header({ progress }: HeaderProps) {
     if (PageComponent && typeof PageComponent.preload === 'function') {
       PageComponent.preload()
     }
+  }
+
+  const handleHover = (path: string) => {
+    if (sfxEnabled) playSfx('/sounds/sfx/hover.mp3', 0.7)
+    handlePreload(path)
+  }
+
+  const handleClick = () => {
+    if (sfxEnabled) playSfx('/sounds/sfx/click.mp3', 0.5)
   }
 
   useEffect(() => {
@@ -53,47 +66,52 @@ export default function Header({ progress }: HeaderProps) {
   }, [])
 
   return (
-    <header className="relative z-50 shrink-0 text-white">
+    <header className="relative z-50 shrink-0 text-white font-['Orbitron']">
 
       {/* ─── DESKTOP (lg+) ─── */}
-      <div className="hidden lg:flex items-stretch h-10">
+      <div id="tutorial-navbar" className="hidden lg:flex items-stretch h-10">
 
-        {/* Bloque blanco: ícono + nombre + líneas superior e inferior */}
-        <div className="flex items-center gap-2 bg-white text-slate-900 pl-8 pr-5 shrink-0
-                        border-t border-b border-white/50">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="w-3.5 h-3.5 text-red-500"
-          >
-            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-          </svg>
+        {/* Bloque blanco: logo + separador + texto */}
+        <div className="flex items-center bg-white shrink-0 border-b border-white/50 pl-8 pr-6 py-1">
           <Link
             to="/"
-            onClick={() => setIsOpen(false)}
-            className="text-xs font-bold tracking-tight text-slate-900 hover:text-red-600 transition"
+            onMouseEnter={() => {
+              if (sfxEnabled) playSfx('/sounds/sfx/hover.mp3', 0.7)
+            }}
+            onClick={() => {
+              handleClick()
+              setIsOpen(false)
+            }}
+            className="flex items-center gap-2"
           >
-            Punto Crítico
+            {/* Logo */}
+            <img
+              src={logo}
+              alt="Punto Crítico"
+              className="h-8 w-auto object-contain"
+            />
+
+            {/* Separador vertical */}
+            <div className="h-5 w-px bg-slate-300" />
+
+            {/* Texto */}
+            <span className="font-['Orbitron'] text-sm font-bold tracking-tight text-slate-900 lowercase">
+              punto critico
+            </span>
           </Link>
         </div>
 
-        {/* Línea vertical divisoria izquierda */}
         <div className="w-px bg-white/50" />
-
-        {/* GAP central: reservado para la figura del HUD */}
         <div className="flex-1" />
-
-        {/* Línea vertical divisoria derecha */}
         <div className="w-px bg-white/50" />
 
-        {/* Botones de navegación con líneas superior e inferior */}
-        <div className="flex items-center gap-1 px-3 shrink-0
-                        border-t border-b border-white/50">
+        {/* Botones de navegación */}
+        <div className="flex items-center gap-1 px-3 shrink-0 border-b border-white/50">
 
           <NavLink
             to="/"
-            onMouseEnter={() => handlePreload('/')}
+            onMouseEnter={() => handleHover('/')}
+            onClick={handleClick}
             className={({ isActive }) =>
               `px-2 py-0.5 text-[10px] rounded transition ${isActive
                 ? 'bg-blue-800 text-white font-semibold'
@@ -107,8 +125,14 @@ export default function Header({ progress }: HeaderProps) {
           <div ref={navRef} className="relative">
             <button
               type="button"
-              onClick={() => setNavOpen((p) => !p)}
-              onMouseEnter={() => setNavOpen(true)}
+              onClick={() => {
+                handleClick()
+                setNavOpen((p) => !p)
+              }}
+              onMouseEnter={() => {
+                if (sfxEnabled) playSfx('/sounds/sfx/hover.mp3', 0.7)
+                setNavOpen(true)
+              }}
               className="px-2 py-0.5 text-[10px] rounded transition text-white/80 hover:bg-white/10 hover:text-white flex items-center gap-1"
             >
               Navegación
@@ -137,8 +161,11 @@ export default function Header({ progress }: HeaderProps) {
                     <NavLink
                       key={item.to}
                       to={item.to}
-                      onClick={() => setNavOpen(false)}
-                      onMouseEnter={() => handlePreload(item.to)}
+                      onMouseEnter={() => handleHover(item.to)}
+                      onClick={() => {
+                        handleClick()
+                        setNavOpen(false)
+                      }}
                       className={({ isActive }) =>
                         `block px-4 py-2 text-sm transition ${isActive
                           ? 'bg-blue-800 text-white font-semibold'
@@ -156,7 +183,8 @@ export default function Header({ progress }: HeaderProps) {
 
           <NavLink
             to="/mapa"
-            onMouseEnter={() => handlePreload('/mapa')}
+            onMouseEnter={() => handleHover('/mapa')}
+            onClick={handleClick}
             className={({ isActive }) =>
               `px-2 py-0.5 text-[10px] rounded transition ${isActive
                 ? 'bg-blue-800 text-white font-semibold'
@@ -169,33 +197,47 @@ export default function Header({ progress }: HeaderProps) {
         </div>
       </div>
 
-      {/* ─── MÓVIL (< lg) ─── */}
-      <div className="lg:hidden flex items-center justify-between px-4 py-1">
-        <div className="flex items-center gap-2 ml-3">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="w-3.5 h-3.5 text-red-500"
-          >
-            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-          </svg>
+      {/* ─── MÓVIL / TABLET (< lg) ─── */}
+      <div id="tutorial-navbar" className="lg:hidden flex items-center justify-between">
+
+        {/* Bloque blanco: logo + separador + texto (misma forma que desktop) */}
+        <div className="flex items-center bg-white shrink-0 border-b border-white/50 pl-8 pr-5 py-1">
           <Link
             to="/"
-            onClick={() => setIsOpen(false)}
-            className="text-xs font-bold tracking-tight text-white hover:text-amber-300 transition truncate max-w-[30vw]"
+            onClick={() => {
+              handleClick()
+              setIsOpen(false)
+            }}
+            className="flex items-center gap-2"
           >
-            Punto Crítico
+            {/* Logo */}
+            <img
+              src={logo}
+              alt="Punto Crítico"
+              className="h-8 w-auto object-contain"
+            />
+
+            {/* Separador vertical */}
+            <div className="h-5 w-px bg-slate-300" />
+
+            {/* Texto */}
+            <span className="font-['Orbitron'] text-sm font-bold tracking-tight text-slate-900 lowercase">
+              punto critico
+            </span>
           </Link>
         </div>
 
+        {/* Botón hamburguesa */}
         <button
           type="button"
-          onClick={() => setIsOpen((prev) => !prev)}
+          onClick={() => {
+            handleClick()
+            setIsOpen((prev) => !prev)
+          }}
           aria-expanded={isOpen}
           aria-controls="mobile-nav"
           aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
-          className="p-2 mr-1 rounded hover:bg-white/10 transition"
+          className="p-2 mr-4 rounded hover:bg-white/10 transition"
         >
           <div className="grid grid-cols-3 gap-[3px]">
             {Array.from({ length: 9 }).map((_, i) => (
@@ -222,7 +264,10 @@ export default function Header({ progress }: HeaderProps) {
                 <li key={item.to}>
                   <NavLink
                     to={item.to}
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => {
+                      handleClick()
+                      setIsOpen(false)
+                    }}
                     onTouchStart={() => handlePreload(item.to)}
                     className={({ isActive }) =>
                       `block px-4 py-2 text-sm transition ${isActive
