@@ -84,17 +84,12 @@ export default function Header({ progress }: HeaderProps) {
             }}
             className="flex items-center gap-2"
           >
-            {/* Logo */}
             <img
               src={logo}
               alt="Punto Crítico"
               className="h-8 w-auto object-contain"
             />
-
-            {/* Separador vertical */}
             <div className="h-5 w-px bg-slate-300" />
-
-            {/* Texto */}
             <span className="font-['Orbitron'] text-sm font-bold tracking-tight text-slate-900 lowercase">
               punto critico
             </span>
@@ -106,23 +101,28 @@ export default function Header({ progress }: HeaderProps) {
         <div className="w-px bg-white/50" />
 
         {/* Botones de navegación */}
-        <div className="flex items-center gap-1 px-3 shrink-0 border-b border-white/50">
+        <div className="flex items-center gap-1 pl-3 pr-6 shrink-0 border-b border-white/50">
 
           <NavLink
             to="/"
             onMouseEnter={() => handleHover('/')}
             onClick={handleClick}
             className={({ isActive }) =>
-              `px-2 py-0.5 text-[10px] rounded transition ${isActive
-                ? 'bg-blue-800 text-white font-semibold'
-                : 'text-white/80 hover:bg-white/10 hover:text-white'
+              `px-3 py-1.5 text-[10px] rounded border transition-all duration-200 ${isActive
+                ? 'bg-[#6422bb] border-transparent text-white font-semibold'
+                : 'border-transparent text-white/80 hover:border-white/20 hover:bg-[#A855F7]/20 hover:text-white'
               }`
             }
           >
             Inicio
           </NavLink>
 
-          <div ref={navRef} className="relative">
+          {/* Wrapper que mantiene el dropdown pegado al botón (incluyendo el "puente" del gap) */}
+          <div
+            ref={navRef}
+            className="relative"
+            onMouseLeave={() => setNavOpen(false)}
+          >
             <button
               type="button"
               onClick={() => {
@@ -133,7 +133,10 @@ export default function Header({ progress }: HeaderProps) {
                 if (sfxEnabled) playSfx('/sounds/sfx/hover.mp3', 0.7)
                 setNavOpen(true)
               }}
-              className="px-2 py-0.5 text-[10px] rounded transition text-white/80 hover:bg-white/10 hover:text-white flex items-center gap-1"
+              className={`px-3 py-1.5 text-[10px] rounded border transition-all duration-200 flex items-center gap-1 ${navOpen
+                  ? 'bg-[#9230E6] border-transparent text-white font-semibold'
+                  : 'border-transparent text-white/80 hover:border-white/20 hover:bg-[#A855F7]/20 hover:text-white'
+                }`}
             >
               Navegación
               <svg
@@ -149,34 +152,47 @@ export default function Header({ progress }: HeaderProps) {
 
             <AnimatePresence>
               {navOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: -4, scale: 0.98 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -4, scale: 0.98 }}
-                  transition={{ duration: 0.15 }}
-                  className="absolute top-full right-0 mt-3 w-44 rounded-lg shadow-2xl overflow-hidden
-                             bg-slate-900/95 backdrop-blur-md border border-white/15 z-[70]"
-                >
-                  {dropdownItems.map((item) => (
-                    <NavLink
-                      key={item.to}
-                      to={item.to}
-                      onMouseEnter={() => handleHover(item.to)}
-                      onClick={() => {
-                        handleClick()
-                        setNavOpen(false)
-                      }}
-                      className={({ isActive }) =>
-                        `block px-4 py-2 text-sm transition ${isActive
-                          ? 'bg-blue-800 text-white font-semibold'
-                          : 'text-white/85 hover:bg-white/10 hover:text-white'
-                        }`
-                      }
-                    >
-                      {item.label}
-                    </NavLink>
-                  ))}
-                </motion.div>
+                <>
+                  {/* PUENTE INVISIBLE: cubre el gap entre botón y dropdown.
+                      Sin esto, el onMouseLeave del wrapper se dispara al pasar por el hueco
+                      y el menú se cierra antes de llegar. */}
+                  <div
+                    aria-hidden
+                    className="absolute top-full right-0 w-44 h-3"
+                  />
+
+                  <motion.div
+                    initial={{ opacity: 0, y: -4, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -4, scale: 0.98 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute top-full right-0 mt-3 w-44 rounded-lg shadow-2xl overflow-hidden
+                               bg-[#6c12e2] border border-white/15 z-[70] p-1.5"
+                  >
+                    <ul className="flex flex-col gap-1">
+                      {dropdownItems.map((item) => (
+                        <li key={item.to}>
+                          <NavLink
+                            to={item.to}
+                            onMouseEnter={() => handleHover(item.to)}
+                            onClick={() => {
+                              handleClick()
+                              setNavOpen(false)
+                            }}
+                            className={({ isActive }) =>
+                              `block px-3 py-2 text-sm rounded transition ${isActive
+                                ? 'bg-[#8227f8] text-white font-semibold'
+                                : 'text-white/85 hover:bg-white/10 hover:text-white'
+                              }`
+                            }
+                          >
+                            {item.label}
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                </>
               )}
             </AnimatePresence>
           </div>
@@ -186,9 +202,9 @@ export default function Header({ progress }: HeaderProps) {
             onMouseEnter={() => handleHover('/mapa')}
             onClick={handleClick}
             className={({ isActive }) =>
-              `px-2 py-0.5 text-[10px] rounded transition ${isActive
-                ? 'bg-blue-800 text-white font-semibold'
-                : 'text-white/80 hover:bg-white/10 hover:text-white'
+              `px-3 py-1.5 text-[10px] rounded border transition-all duration-200 ${isActive
+                ? 'bg-[#6422bb] border-transparent text-white font-semibold'
+                : 'border-transparent text-white/80 hover:border-white/20 hover:bg-[#A855F7]/20 hover:text-white'
               }`
             }
           >
@@ -200,7 +216,7 @@ export default function Header({ progress }: HeaderProps) {
       {/* ─── MÓVIL / TABLET (< lg) ─── */}
       <div id="tutorial-navbar" className="lg:hidden flex items-center justify-between">
 
-        {/* Bloque blanco: logo + separador + texto (misma forma que desktop) */}
+        {/* Bloque blanco: logo + separador + texto */}
         <div className="flex items-center bg-white shrink-0 border-b border-white/50 pl-8 pr-5 py-1">
           <Link
             to="/"
@@ -210,17 +226,12 @@ export default function Header({ progress }: HeaderProps) {
             }}
             className="flex items-center gap-2"
           >
-            {/* Logo */}
             <img
               src={logo}
               alt="Punto Crítico"
               className="h-8 w-auto object-contain"
             />
-
-            {/* Separador vertical */}
             <div className="h-5 w-px bg-slate-300" />
-
-            {/* Texto */}
             <span className="font-['Orbitron'] text-sm font-bold tracking-tight text-slate-900 lowercase">
               punto critico
             </span>
@@ -257,9 +268,9 @@ export default function Header({ progress }: HeaderProps) {
             exit={{ opacity: 0, x: 60, scale: 0.95 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="lg:hidden absolute top-full right-3 mt-2 w-56 rounded-lg shadow-2xl overflow-hidden
-                       bg-slate-900/95 backdrop-blur-md border border-white/15 z-[70]"
+             bg-[#6c12e2] border border-white/15 z-[70] p-1.5"
           >
-            <ul className="flex flex-col py-1">
+            <ul className="flex flex-col gap-1">
               {navItems.map((item) => (
                 <li key={item.to}>
                   <NavLink
@@ -270,8 +281,8 @@ export default function Header({ progress }: HeaderProps) {
                     }}
                     onTouchStart={() => handlePreload(item.to)}
                     className={({ isActive }) =>
-                      `block px-4 py-2 text-sm transition ${isActive
-                        ? 'bg-blue-800 text-white font-semibold'
+                      `block px-3 py-2 text-sm rounded transition ${isActive
+                        ? 'bg-[#8227f8] text-white font-semibold'
                         : 'text-white/85 hover:bg-white/10 hover:text-white'
                       }`
                     }

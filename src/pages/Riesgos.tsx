@@ -30,7 +30,7 @@ export default function Riesgos({ preview = false }: RiesgosProps) {
         La mayoría cree que los problemas del corazón aparecen por mala suerte o
         por la edad. Los datos cuentan otra historia: hay factores concretos,
         medibles, que están jugando en contra de millones de argentinos todos
-        los días. Estos son.
+        los días.
       </p>
 
       {/* ── Lista de tarjetas a todo el ancho ── */}
@@ -46,24 +46,19 @@ export default function Riesgos({ preview = false }: RiesgosProps) {
       </div>
 
       {/* ── Cierre narrativo (puente al Impacto) ── */}
-      {!preview && (
-        <section className="mt-16 max-w-4xl mx-auto text-center">
-          <div className="h-px bg-white/10 mb-10 mx-auto w-24" />
-          <p className="text-lg md:text-xl text-slate-100 leading-relaxed mb-4">
-            La enfermedad cardiovascular no es solo genética, ni solo edad, ni
-            solo mala suerte.
-          </p>
-          <p className="text-base md:text-lg text-slate-300 leading-relaxed">
-            Es lo que comemos, cómo dormimos, cuánto nos movemos, cuánto nos
-            estresamos, lo que creemos saber y lo que nunca nos contaron. Cada
-            uno de esos factores tiene un peso. Y ese peso, cuando se suma,
-            deja de ser invisible.
-          </p>
-          <p className="text-sm md:text-base text-amber-300 font-semibold mt-6">
-            La pregunta ya no es quién corre riesgo. Es cuánto está costando.
-          </p>
-        </section>
-      )}
+      <section className="mt-16 max-w-3xl mx-auto">
+        <div className="h-px bg-white/10 mb-10 mx-auto w-24" />
+        <p className="text-lg md:text-xl text-slate-100 leading-relaxed mb-4 text-justify">
+          La enfermedad cardiovascular no es solo genética, ni solo edad, ni
+          solo mala suerte. Es lo que comemos, cómo dormimos, cuánto nos
+          movemos, cuánto nos estresamos, lo que creemos saber y lo que nunca
+          nos contaron. Cada uno de esos factores tiene un peso. Y ese peso,
+          cuando se suma, deja de ser invisible.
+        </p>
+        <p className="text-base md:text-lg text-amber-300 font-semibold mt-6 text-center">
+          La pregunta ya no es quién corre riesgo. Es cuánto está costando.
+        </p>
+      </section>
 
       {/* ── CTA al final, solo en preview ── */}
       {preview && (

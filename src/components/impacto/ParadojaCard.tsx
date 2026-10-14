@@ -11,6 +11,10 @@ import {
 import CardShell from './CardShell'
 import type { CardImpacto } from '../../data/services/impacto.service'
 
+// Protagonista: verde menta. Acentos: verde lima y turquesa.
+const COLOR_PRINCIPAL = '#5DD9A8'
+const COLOR_SECUNDARIO = '#A8E063'
+
 interface Props {
   card: CardImpacto
   index?: number
@@ -40,40 +44,40 @@ export default function ParadojaCard({ card, index = 0 }: Props) {
       descripcion={card.descripcion}
       index={index}
     >
-      {/* Comparación 1:1 */}
+      {/* Comparación 1:1 con tintes verde lima y verde menta */}
       <div className="grid grid-cols-2 gap-4 mb-8">
-        <div className="bg-red-500/10 border border-red-400/20 rounded-xl p-5 text-center">
-          <p className="text-4xl md:text-5xl font-bold text-red-300">
+        <div className="bg-[#A8E063]/10 border border-[#A8E063]/30 rounded-xl p-5 text-center">
+          <p className="text-4xl md:text-5xl font-bold text-[#B8E878]">
             {datos.cardiologos_por_millon}
           </p>
-          <p className="text-xs md:text-sm text-slate-300 mt-2">
+          <p className="text-xs md:text-sm text-[#D4EFB0] mt-2">
             cardiólogos por millón (Argentina)
           </p>
         </div>
-        <div className="bg-emerald-500/10 border border-emerald-400/20 rounded-xl p-5 text-center">
-          <p className="text-4xl md:text-5xl font-bold text-emerald-300">
+        <div className="bg-[#5DD9A8]/10 border border-[#5DD9A8]/30 rounded-xl p-5 text-center">
+          <p className="text-4xl md:text-5xl font-bold text-[#7FE4BD]">
             {datos.cardiologos_optimo_oms}
           </p>
-          <p className="text-xs md:text-sm text-slate-300 mt-2">
+          <p className="text-xs md:text-sm text-[#B0EED6] mt-2">
             recomendado por la OMS
           </p>
         </div>
       </div>
 
-      {/* Concentración territorial */}
-      <div className="bg-orange-500/10 border border-orange-400/20 rounded-xl p-5 text-center mb-8">
-        <p className="text-4xl md:text-5xl font-bold text-orange-300">
+      {/* Concentración territorial con tinte verde menta */}
+      <div className="bg-[#5DD9A8]/10 border border-[#5DD9A8]/30 rounded-xl p-5 text-center mb-8">
+        <p className="text-4xl md:text-5xl font-bold text-[#7FE4BD]">
           {datos.concentracion_caba_ba}%
         </p>
-        <p className="text-xs md:text-sm text-slate-300 mt-2">
+        <p className="text-xs md:text-sm text-[#B0EED6] mt-2">
           de los {datos.centros_rehabilitacion_total} centros de rehabilitación
           están en CABA y Buenos Aires
         </p>
       </div>
 
-      {/* Distribución por región */}
+      {/* Distribución por región: barras horizontales verde menta/lima */}
       <div>
-        <h3 className="text-sm font-semibold text-slate-300 mb-3">
+        <h3 className="text-sm font-semibold text-[#A5F3EA] mb-3">
           Centros de rehabilitación cardiovascular por región
         </h3>
         <div className="h-72 w-full">
@@ -85,24 +89,25 @@ export default function ParadojaCard({ card, index = 0 }: Props) {
             >
               <CartesianGrid
                 strokeDasharray="3 3"
-                stroke="rgba(255,255,255,0.08)"
+                stroke="rgba(93, 217, 168, 0.1)"
                 horizontal={false}
               />
               <XAxis
                 type="number"
-                tick={{ fontSize: 11, fill: '#cbd5e1' }}
-                axisLine={{ stroke: 'rgba(255,255,255,0.15)' }}
-                tickLine={{ stroke: 'rgba(255,255,255,0.15)' }}
+                tick={{ fontSize: 11, fill: '#B0EED6' }}
+                axisLine={{ stroke: 'rgba(93, 217, 168, 0.3)' }}
+                tickLine={{ stroke: 'rgba(93, 217, 168, 0.3)' }}
               />
               <YAxis
                 type="category"
                 dataKey="region"
-                tick={{ fontSize: 11, fill: '#cbd5e1' }}
+                tick={{ fontSize: 11, fill: '#B0EED6' }}
                 width={130}
-                axisLine={{ stroke: 'rgba(255,255,255,0.15)' }}
-                tickLine={{ stroke: 'rgba(255,255,255,0.15)' }}
+                axisLine={{ stroke: 'rgba(93, 217, 168, 0.3)' }}
+                tickLine={{ stroke: 'rgba(93, 217, 168, 0.3)' }}
               />
               <Tooltip
+                cursor={{ fill: 'rgba(93, 217, 168, 0.08)' }}
                 formatter={(value) => [
                   Number(
                     Array.isArray(value) ? value[0] ?? 0 : value ?? 0
@@ -111,22 +116,30 @@ export default function ParadojaCard({ card, index = 0 }: Props) {
                 ]}
                 contentStyle={{
                   borderRadius: '8px',
-                  border: '1px solid rgba(255,255,255,0.15)',
-                  background: 'rgba(15, 10, 51, 0.95)',
+                  border: '1px solid rgba(93, 217, 168, 0.3)',
+                  background: 'rgba(10, 60, 45, 0.95)',
                   color: '#fff',
                   fontSize: '12px',
                 }}
-                labelStyle={{ color: '#cbd5e1' }}
+                labelStyle={{ color: '#B0EED6' }}
               />
               <Bar
                 dataKey="valor"
                 radius={[0, 6, 6, 0]}
                 animationDuration={900}
+                activeBar={{
+                  fill: '#FFFFFF',
+                  stroke: '#5DD9A8',
+                  strokeWidth: 1,
+                  style: {
+                    filter: 'drop-shadow(0 0 8px rgba(93, 217, 168, 0.9))',
+                  },
+                }}
               >
                 {dataRegiones.map((entry, i) => (
                   <Cell
                     key={i}
-                    fill={entry.valor === maxValor ? '#ea580c' : '#fdba74'}
+                    fill={entry.valor === maxValor ? COLOR_PRINCIPAL : COLOR_SECUNDARIO}
                   />
                 ))}
               </Bar>
@@ -135,7 +148,7 @@ export default function ParadojaCard({ card, index = 0 }: Props) {
         </div>
       </div>
 
-      <p className="text-xs text-slate-400 italic mt-4">{datos.nota}</p>
+      <p className="text-xs text-[#A5F3EA]/60 italic mt-4">{datos.nota}</p>
     </CardShell>
   )
 }

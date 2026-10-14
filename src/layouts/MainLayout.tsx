@@ -51,20 +51,48 @@ export default function MainLayout() {
 
   return (
     <div className="h-dvh w-full overflow-hidden relative bg-black">
+
+      {/* ═══════════════════════════════════════════════════
+          FONDO PRINCIPAL — Degradado diagonal de 4 colores
+          ═══════════════════════════════════════════════════
+              · Ángulo: 210deg (de esquina superior-izquierda hacia abajo-derecha)
+                - 0deg   = de abajo hacia arriba
+                - 30deg  = diagonal suave hacia la derecha (versión anterior)
+                - 45deg  = diagonal exacta
+                - 90deg  = de izquierda a derecha
+                - 180deg = de arriba hacia abajo
+                - 210deg = diagonal hacia abajo-derecha  ← actual
+                - 225deg = diagonal exacta hacia abajo-derecha
+
+              · Stops:
+                - 0%   → #1418A8  (azul profundo, arriba-izquierda)
+                - 35%  → #5109a5  (violeta intenso)
+                - 70%  → #C54EDE  (magenta suave)
+                - 100% → #E386DC  (lila claro, abajo-derecha)
+          */}
       <div
         className="pointer-events-none absolute inset-0 z-0"
         style={{
           background:
-            'linear-gradient(45deg, #0F0A33 0%, #1C2070 50%, #0F0A33 100%)',
+            'linear-gradient(135deg, #131585 0%, #441EBD 21%, #6616C4 45%, #C430E3 75%, #E37FDC 100%)',
         }}
       />
-      <div
+
+      {/* ═══════════════════════════════════════════════════
+          LUZ DORADA — Desactivada por ahora
+      ═══════════════════════════════════════════════════
+          La paleta nueva es violeta/rosa, así que el dorado
+          puede no combinar. Si querés eliminarla del todo,
+          borrá este bloque. Si querés probar cómo queda,
+          descomentalo.
+      */}
+      {/* <div
         className="pointer-events-none absolute inset-0 z-0"
         style={{
           background:
-            'radial-gradient(ellipse at 100% 100%, rgba(190, 124, 45, 0.35) 0%, rgba(190, 124, 45, 0.15) 35%, transparent 70%)',
+            'radial-gradient(ellipse at 100% 100%, rgba(190, 124, 45, 0.15) 0%, transparent 45%)',
         }}
-      />
+      /> */}
 
       <div className="relative z-10 w-full h-full">
         <HudFrame
@@ -119,7 +147,6 @@ export default function MainLayout() {
             </motion.div>
           </div>
         </HudFrame>
-        {/* Tutorial (solo primera vez) */}
         <Tutorial />
       </div>
     </div>
