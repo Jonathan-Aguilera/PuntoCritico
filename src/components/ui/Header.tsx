@@ -5,6 +5,7 @@ import { preloadablePages } from '../../App'
 import { playSfx } from '../../lib/audio'
 import { useSound as useSoundControl } from '../../contexts/SoundContext'
 import logo from '../../assets/logo.png'
+import { useMapTransition } from '../../contexts/MapTransitionContext'
 
 const navItems = [
   { to: '/', label: 'Inicio' },
@@ -28,6 +29,8 @@ export default function Header({ progress }: HeaderProps) {
   const [navOpen, setNavOpen] = useState(false)
   const navRef = useRef<HTMLDivElement>(null)
   const { sfxEnabled } = useSoundControl()
+
+  const { startMapTransition } = useMapTransition()
 
   void progress
 
@@ -134,8 +137,8 @@ export default function Header({ progress }: HeaderProps) {
                 setNavOpen(true)
               }}
               className={`px-3 py-1.5 text-[10px] rounded border transition-all duration-200 flex items-center gap-1 ${navOpen
-                  ? 'bg-[#9230E6] border-transparent text-white font-semibold'
-                  : 'border-transparent text-white/80 hover:border-white/20 hover:bg-[#A855F7]/20 hover:text-white'
+                ? 'bg-[#9230E6] border-transparent text-white font-semibold'
+                : 'border-transparent text-white/80 hover:border-white/20 hover:bg-[#A855F7]/20 hover:text-white'
                 }`}
             >
               Navegación
@@ -197,19 +200,18 @@ export default function Header({ progress }: HeaderProps) {
             </AnimatePresence>
           </div>
 
-          <NavLink
-            to="/mapa"
+          {/* Botón Mapa con transición especial */}
+          <button
+            type="button"
             onMouseEnter={() => handleHover('/mapa')}
-            onClick={handleClick}
-            className={({ isActive }) =>
-              `px-3 py-1.5 text-[10px] rounded border transition-all duration-200 ${isActive
-                ? 'bg-[#6422bb] border-transparent text-white font-semibold'
-                : 'border-transparent text-white/80 hover:border-white/20 hover:bg-[#A855F7]/20 hover:text-white'
-              }`
-            }
+            onClick={() => {
+              handleClick()
+              startMapTransition()
+            }}
+            className="px-3 py-1.5 text-[10px] rounded border transition-all duration-200 border-transparent text-white/80 hover:border-white/20 hover:bg-[#A855F7]/20 hover:text-white"
           >
             Mapa
-          </NavLink>
+          </button>
         </div>
       </div>
 
@@ -275,8 +277,14 @@ export default function Header({ progress }: HeaderProps) {
                 <li key={item.to}>
                   <NavLink
                     to={item.to}
-                    onClick={() => {
+                    onClick={(e) => {
                       handleClick()
+                      if (item.to === '/mapa') {
+                        e.preventDefault()
+                        setIsOpen(false)
+                        startMapTransition()
+                        return
+                      }
                       setIsOpen(false)
                     }}
                     onTouchStart={() => handlePreload(item.to)}

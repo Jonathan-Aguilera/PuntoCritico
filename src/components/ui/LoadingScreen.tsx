@@ -1,75 +1,42 @@
 import { useEffect, useRef, useState } from 'react'
-import { motion } from 'motion/react'
+import { motion, AnimatePresence } from 'motion/react'
 import { useSound as useSoundControl } from '../../contexts/SoundContext'
 import { playSfx } from '../../lib/audio'
 
+export interface PreloadTask {
+  id: string
+  label: string
+  run: () => void | Promise<void>
+  /** Duración mínima en ms para que la tarea se "vea" en la barra.
+   *  Si la tarea real tarda menos, se estira hasta este valor.
+   *  Si tarda más, la barra espera. */
+  minDuration?: number
+}
+
 interface LoadingScreenProps {
   onComplete: () => void
+  tasks: PreloadTask[]
 }
 
 // Cada celda vale 5% (20 celdas en total)
 const CELLS = 20
 
-// Segmentos de la curva de carga (no lineal, con pausas)
-const SEGMENTS = [
-  { end: 0.15, duration: 800 },   // arranque rápido
-  { end: 0.18, duration: 700 },   // pausa corta
-  { end: 0.35, duration: 900 },   // avance rápido
-  { end: 0.42, duration: 1100 },  // pausa larga
-  { end: 0.60, duration: 900 },   // avance normal
-  { end: 0.66, duration: 600 },   // micro-pausa
-  { end: 0.85, duration: 1000 },  // avance
-  { end: 0.90, duration: 900 },   // pausa
-  { end: 1.00, duration: 900 },   // cierre
-]
+/** EaseOutCubic para que la barra desacelere al final de cada tarea */
+const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3)
 
-// Duración total = suma de segmentos
-const TOTAL_DURATION = SEGMENTS.reduce((acc, s) => acc + s.duration, 0)
-
-// Mensajes que aparecen durante la carga (por umbral de progreso)
-const MESSAGES = [
-  { at: 0.15, text: 'Inicializando sistema…' },
-  { at: 0.45, text: 'Cargando datos cardiovasculares…' },
-  { at: 0.75, text: 'Personalizando experiencia…' },
-]
-
-/**
- * Convierte el tiempo transcurrido en un progreso (0–1) usando la curva
- * de segmentos. Esto permite avanzar rápido en unos tramos y "detenerse"
- * en otros, simulando cargas de componentes reales.
- */
-function computeProgress(elapsed: number): number {
-  let accTime = 0
-  let prevEnd = 0
-
-  for (const seg of SEGMENTS) {
-    const segStart = accTime
-    const segEnd = accTime + seg.duration
-    if (elapsed < segEnd) {
-      const segProgress = (elapsed - segStart) / seg.duration
-      return prevEnd + (seg.end - prevEnd) * segProgress
-    }
-    accTime = segEnd
-    prevEnd = seg.end
-  }
-  return 1
-}
-
-export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
+export default function LoadingScreen({ onComplete, tasks }: LoadingScreenProps) {
   const [progress, setProgress] = useState(0)
+  const [label, setLabel] = useState('Iniciando sistema…')
   const { sfxEnabled } = useSoundControl()
+
   const lastTickRef = useRef(0)
-  const hasCompletedRef = useRef(false)
+  const completedRef = useRef(false)
   const onCompleteRef = useRef(onComplete)
   const sfxEnabledRef = useRef(sfxEnabled)
 
-  useEffect(() => {
-    onCompleteRef.current = onComplete
-  }, [onComplete])
-
-  useEffect(() => {
-    sfxEnabledRef.current = sfxEnabled
-  }, [sfxEnabled])
+  // Refs para que los efectos no dependan de estas props
+  useEffect(() => { onCompleteRef.current = onComplete }, [onComplete])
+  useEffect(() => { sfxEnabledRef.current = sfxEnabled }, [sfxEnabled])
 
   // Sonido "boot" al montar
   useEffect(() => {
@@ -79,48 +46,91 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
     return () => clearTimeout(t)
   }, [])
 
-  // Animación de la barra
+  // Tick de audio por celda completada
   useEffect(() => {
-    let rafId: number
-    const start = performance.now()
-
-    const tick = (now: number) => {
-      const elapsed = now - start
-      const value = Math.min(1, computeProgress(elapsed))
-      setProgress(value)
-
-      // Tick cada 5% (una celda)
-      const currentTick = Math.floor(value * CELLS)
-      if (currentTick > lastTickRef.current && currentTick <= CELLS) {
-        lastTickRef.current = currentTick
-        if (currentTick < CELLS && sfxEnabledRef.current) {
-          playSfx('/sounds/sfx/load-tick.mp3', 0.6)
-        }
+    const currentTick = Math.floor(progress * CELLS)
+    if (currentTick > lastTickRef.current && currentTick <= CELLS) {
+      lastTickRef.current = currentTick
+      if (currentTick < CELLS && sfxEnabledRef.current) {
+        playSfx('/sounds/sfx/load-tick.mp3', 0.6)
       }
+      if (currentTick === CELLS && !completedRef.current) {
+        completedRef.current = true
+        if (sfxEnabledRef.current) playSfx('/sounds/sfx/load-complete.mp3', 1.0)
+      }
+    }
+  }, [progress])
 
-      // Fin de la carga
-      if (value >= 1) {
-        if (!hasCompletedRef.current) {
-          hasCompletedRef.current = true
-          if (sfxEnabledRef.current) {
-            playSfx('/sounds/sfx/load-complete.mp3', 1.0)
-          }
-          setTimeout(() => onCompleteRef.current(), 400)
-        }
+  // Runner principal: ejecuta las tareas en serie y actualiza la barra
+  useEffect(() => {
+    let cancelled = false
+    let rafId = 0
+
+    const run = async () => {
+      const total = tasks.length
+
+      // Sin tareas: pasamos directo a "listo"
+      if (total === 0) {
+        setProgress(1)
+        setLabel('Todo listo')
+        setTimeout(() => {
+          if (!cancelled) onCompleteRef.current()
+        }, 300)
         return
       }
 
-      rafId = requestAnimationFrame(tick)
+      for (let i = 0; i < total; i++) {
+        if (cancelled) return
+        const task = tasks[i]
+        setLabel(task.label)
+
+        const minDur = task.minDuration ?? 400
+        const startTime = performance.now()
+        const baseProgress = i / total
+        const nextProgress = (i + 1) / total
+
+        // Ejecutamos la tarea real (los errores no detienen la carga)
+        try {
+          await Promise.resolve(task.run())
+        } catch (err) {
+          console.warn(`[preload] tarea "${task.id}" falló:`, err)
+        }
+
+        // Interpolamos la barra durante el resto del minDuration
+        await new Promise<void>((resolve) => {
+          const tick = () => {
+            if (cancelled) { resolve(); return }
+            const elapsed = performance.now() - startTime
+            const t = Math.min(1, elapsed / minDur)
+            const eased = easeOutCubic(t)
+            setProgress(baseProgress + (nextProgress - baseProgress) * eased)
+            if (t < 1) {
+              rafId = requestAnimationFrame(tick)
+            } else {
+              setProgress(nextProgress)
+              resolve()
+            }
+          }
+          rafId = requestAnimationFrame(tick)
+        })
+      }
+
+      if (cancelled) return
+      setProgress(1)
+      setLabel('Todo listo')
+      setTimeout(() => {
+        if (!cancelled) onCompleteRef.current()
+      }, 400)
     }
 
-    rafId = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(rafId)
-  }, [])
+    run()
+    return () => {
+      cancelled = true
+      cancelAnimationFrame(rafId)
+    }
+  }, [tasks])
 
-  // Determina qué mensaje mostrar según el progreso
-  const currentMessage = [...MESSAGES]
-    .reverse()
-    .find((m) => progress >= m.at)?.text ?? 'Cargando…'
+  const percent = Math.round(progress * 100)
 
   return (
     <motion.div
@@ -128,6 +138,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
       exit={{ opacity: 0, transition: { duration: 0.4 } }}
       className="fixed inset-0 z-[200] bg-black flex flex-col items-center justify-center"
     >
+      {/* Fondos */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -179,18 +190,20 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
         })}
       </div>
 
-      {/* Mensaje de estado */}
+      {/* Mensaje de la tarea actual */}
       <div className="relative h-6 mt-6 overflow-hidden">
-        <motion.p
-          key={currentMessage}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          transition={{ duration: 0.4 }}
-          className="text-xs text-slate-400 font-mono tracking-wider text-center"
-        >
-          {currentMessage}
-        </motion.p>
+        <AnimatePresence mode="wait">
+          <motion.p
+            key={label}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.3 }}
+            className="text-xs text-slate-300 font-mono tracking-wider text-center"
+          >
+            {label}
+          </motion.p>
+        </AnimatePresence>
       </div>
 
       {/* Porcentaje */}
@@ -200,7 +213,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
         transition={{ delay: 0.4 }}
         className="relative text-[10px] text-slate-500 mt-2 font-mono tracking-[0.2em]"
       >
-        {String(Math.round(progress * 100)).padStart(2, '0')}%
+        {String(percent).padStart(2, '0')}%
       </motion.p>
     </motion.div>
   )

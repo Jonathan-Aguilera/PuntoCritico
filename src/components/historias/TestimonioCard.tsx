@@ -20,35 +20,32 @@ export default function TestimonioCard({
         delay: index * 0.1,
         ease: [0.16, 1, 0.3, 1],
       }}
-      className="relative bg-white/5 backdrop-blur-md rounded-xl p-6 shadow-xl border border-white/10 hover:bg-white/8 hover:border-purple-400/30 transition-all flex flex-col h-full"
+      className="relative bg-white/5 backdrop-blur-md rounded-xl p-6 shadow-xl border border-white/10 hover:border-[#4ECDC4]/40 transition-all flex flex-col h-full"
     >
       {/* Comillas decorativas */}
       <span
-        className="absolute top-2 left-4 text-6xl text-purple-400/30 font-serif leading-none select-none pointer-events-none"
+        className="absolute top-2 left-4 text-6xl text-[#FF6B6B]/25 font-serif leading-none select-none pointer-events-none"
         aria-hidden="true"
       >
         "
       </span>
 
       {/* Fragmento */}
-      <p className="relative text-slate-100 leading-relaxed text-sm md:text-base italic mb-5 pt-6">
+      <p className="relative text-[#A5F3EA] leading-relaxed text-sm md:text-base italic mb-5 pt-6">
         {testimonio.fragmento}
       </p>
 
       {/* Separador */}
       <div className="border-t border-white/10 pt-4 mt-auto">
-        {/* Título de la historia */}
-        <h4 className="text-xs uppercase tracking-wider font-bold text-amber-300 mb-2">
+        <h4 className="text-xs uppercase tracking-wider font-bold text-[#FFC93C] mb-2">
           {testimonio.titulo}
         </h4>
 
-        {/* Nombre y edad */}
-        <p className="text-sm font-semibold text-white">
+        <p className="text-sm font-semibold text-[#A5F3EA]">
           {testimonio.nombre}, {testimonio.edad} años
         </p>
 
-        {/* Recomendación */}
-        <p className="text-xs text-slate-400 italic mt-2 leading-snug">
+        <p className="text-xs text-[#A5F3EA]/60 italic mt-2 leading-snug">
           "{testimonio.recomendacion}"
         </p>
       </div>

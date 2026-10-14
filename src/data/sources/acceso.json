@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "fuente_imagenes": "Wikimedia Commons / Wikipedia",
   "fuente_datos": "DEIS / Ministerio de Salud / SAC / INDEC",
-  "intro": "Durante el último siglo, el acceso a la información sobre salud cardiovascular cambió radicalmente. Pero el número de muertes no.",
+  "intro": "La información para cuidar el corazón ya no es un privilegio de pocos. Está disponible, es gratuita y está a un clic. Lo que sigue ya no depende del sistema.",
   "linea_tiempo": [
     {
       "id": "1920",
@@ -92,6 +92,6 @@
   ],
   "cierre": {
     "frase": "El acceso a la información cambió. El problema, no.",
-    "subtexto": "Hoy sabemos más que nunca. Y aún así, seguimos muriendo de lo mismo."
+    "subtexto": "Hoy sabemos más que nunca. Y aún así, el escenario sigue siendo el mismo."
   }
 }

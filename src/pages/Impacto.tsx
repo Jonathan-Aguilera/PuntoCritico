@@ -33,21 +33,22 @@ export default function Impacto({ preview = false }: ImpactoProps) {
   const cardsAMostrar = preview
     ? ['impacto_sociocultural', 'gasto_sistema', 'paradoja_inversion']
     : [
-      'impacto_sociocultural',
-      'gasto_sistema',
-      'paradoja_inversion',
-      'erosion_confianza',
-    ]
+        'impacto_sociocultural',
+        'gasto_sistema',
+        'paradoja_inversion',
+        'erosion_confianza',
+      ]
 
   return (
     <ViewContainer>
       {/* ── Título ── */}
       <section className="text-center mb-6">
         <h1
-          className={`font-bold leading-[1.1] tracking-tight bg-linear-to-r from-[#7BA8D9] to-[#C8E0FF] bg-clip-text text-transparent ${preview
+          className={`font-bold leading-[1.1] tracking-tight bg-linear-to-r from-[#7BA8D9] to-[#C8E0FF] bg-clip-text text-transparent ${
+            preview
               ? 'text-3xl sm:text-4xl md:text-5xl'
               : 'text-5xl sm:text-6xl md:text-7xl lg:text-8xl'
-            }`}
+          }`}
         >
           Lo que está costando
         </h1>
@@ -75,7 +76,7 @@ export default function Impacto({ preview = false }: ImpactoProps) {
           enfermedad cardiovascular no elige barrios, ni clases sociales, ni
           edades. Ocurre todos los días, en cada provincia, en cada familia.
         </p>
-        <p className="text-base md:text-lg text-[#4ECDC4] font-semibold text-center mt-6">
+        <p className="text-base md:text-lg text-[#A5F3EA] font-semibold text-center mt-6">
           ¿Estamos dispuestos a cambiar el cómo pensamos y actuamos para reducir
           este impacto?
         </p>

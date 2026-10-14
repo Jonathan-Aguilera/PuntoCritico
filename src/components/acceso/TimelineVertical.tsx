@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from 'react'
+import { AnimatePresence, motion } from 'motion/react'
 import TimelineCard from './TimelineCard'
 import {
   imagenPorId,
@@ -9,24 +11,151 @@ interface TimelineVerticalProps {
 }
 
 export default function TimelineVertical({ items }: TimelineVerticalProps) {
-  return (
-    <div className="relative pl-9">
-      {/* Línea vertical continua */}
-      <div className="absolute left-[10px] top-2 bottom-2 w-0.5 bg-white/20" />
+  const [openId, setOpenId] = useState<string | null>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
 
-      <div className="space-y-6">
-        {items.map((item, i) => (
-          <div key={item.id} className="relative">
-            {/* Punto sobre la línea */}
-            <div className="absolute -left-[28px] top-3 w-5 h-5 rounded-full bg-[#7BA8D9] border-[3px] border-slate-900 shadow-md shadow-[#7BA8D9]/50 z-10" />
-            {/* Tarjeta */}
-            <TimelineCard
-              item={item}
-              imagenSrc={imagenPorId[item.id]}
-              index={i}
-            />
-          </div>
-        ))}
+  // Cerrar al hacer click fuera del componente
+  useEffect(() => {
+    if (!openId) return
+    const handler = (e: MouseEvent) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(e.target as Node)
+      ) {
+        setOpenId(null)
+      }
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [openId])
+
+  return (
+    <div ref={containerRef} className="relative py-6">
+      {/* ── Barra vertical GRUESA centrada ── */}
+      <div className="absolute left-1/2 top-2 bottom-2 w-1.5 bg-white/25 -translate-x-1/2 z-0 rounded-full" />
+
+      <div className="space-y-8">
+        {items.map((item, i) => {
+          const isRight = i % 2 === 1
+          const dotColor = isRight ? '#c430e3' : '#441ebd'
+          const isOpen = openId === item.id
+
+          return (
+            <div key={item.id} className="relative">
+              {/* ── Fila: botón + año + flecha (la barra es absoluta al centro) ── */}
+              <div className="flex items-center">
+                {/* Columna izquierda: botón + flecha → (solo si NO es right) */}
+                <div className="flex-1 flex justify-end items-center gap-2 pr-3">
+                  {!isRight && (
+                    <>
+                      <div className="flex flex-col items-center">
+                        <button
+                          type="button"
+                          onClick={() => setOpenId(isOpen ? null : item.id)}
+                          aria-expanded={isOpen}
+                          aria-label={`Ver detalle: ${item.titulo}`}
+                          className="w-16 h-16 rounded-full overflow-hidden bg-white shadow-lg transition-transform duration-200 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
+                          style={{
+                            borderWidth: '3px',
+                            borderStyle: 'solid',
+                            borderColor: dotColor,
+                            boxShadow: `0 0 16px ${dotColor}55`,
+                          }}
+                        >
+                          <img
+                            src={imagenPorId[item.id]}
+                            alt={item.imagen.titulo}
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                          />
+                        </button>
+                        <span className="text-[11px] font-semibold text-[#A5F3EA]/80 mt-1.5 tabular-nums">
+                          {item.anio}
+                        </span>
+                      </div>
+                      {/* Flecha apuntando a la barra */}
+                      <span
+                        className="text-xl font-bold leading-none"
+                        style={{ color: dotColor }}
+                        aria-hidden="true"
+                      >
+                        →
+                      </span>
+                    </>
+                  )}
+                </div>
+
+                {/* Centro: spacer (la barra pasa por acá) */}
+                <div className="w-2 flex-shrink-0" />
+
+                {/* Columna derecha: flecha ← + botón (solo si es right) */}
+                <div className="flex-1 flex justify-start items-center gap-2 pl-3">
+                  {isRight && (
+                    <>
+                      <span
+                        className="text-xl font-bold leading-none"
+                        style={{ color: dotColor }}
+                        aria-hidden="true"
+                      >
+                        ←
+                      </span>
+                      <div className="flex flex-col items-center">
+                        <button
+                          type="button"
+                          onClick={() => setOpenId(isOpen ? null : item.id)}
+                          aria-expanded={isOpen}
+                          aria-label={`Ver detalle: ${item.titulo}`}
+                          className="w-16 h-16 rounded-full overflow-hidden bg-white shadow-lg transition-transform duration-200 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
+                          style={{
+                            borderWidth: '3px',
+                            borderStyle: 'solid',
+                            borderColor: dotColor,
+                            boxShadow: `0 0 16px ${dotColor}55`,
+                          }}
+                        >
+                          <img
+                            src={imagenPorId[item.id]}
+                            alt={item.imagen.titulo}
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                          />
+                        </button>
+                        <span className="text-[11px] font-semibold text-[#A5F3EA]/80 mt-1.5 tabular-nums">
+                          {item.anio}
+                        </span>
+                      </div>
+                    </>
+                  )}
+                </div>
+              </div>
+
+              {/* ── Card expandible con animación suave ── */}
+              <AnimatePresence initial={false}>
+                {isOpen && (
+                  <motion.div
+                    key={item.id}
+                    initial={{ opacity: 0, height: 0, y: -6 }}
+                    animate={{ opacity: 1, height: 'auto', y: 0 }}
+                    exit={{ opacity: 0, height: 0, y: -6 }}
+                    transition={{
+                      duration: 0.22,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                    className="overflow-hidden"
+                  >
+                    <div className="pt-4">
+                      <TimelineCard
+                        item={item}
+                        imagenSrc={imagenPorId[item.id]}
+                        index={i}
+                      />
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          )
+        })}
       </div>
     </div>
   )

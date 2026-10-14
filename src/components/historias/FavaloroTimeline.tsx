@@ -8,16 +8,16 @@ interface FavaloroTimelineProps {
 export default function FavaloroTimeline({ biografia }: FavaloroTimelineProps) {
   return (
     <section className="mb-16">
-      <h3 className="text-2xl md:text-3xl font-bold text-amber-300 mb-2 text-center">
+      <h3 className="text-2xl md:text-3xl font-bold text-[#4ECDC4] mb-2 text-center">
         Su vida, en cuatro etapas
       </h3>
-      <p className="text-slate-300 text-center mb-10 text-sm md:text-base">
-        De un barrio obrero de La Plata a los quirófanos más importantes del mundo.
+      <p className="text-[#A5F3EA]/75 text-center mb-10 text-sm md:text-base">
+        De un barrio obrero de La Plata a los quirófanos más importantes del
+        mundo.
       </p>
 
       {/* ── Desktop: horizontal ── */}
       <div className="hidden lg:block relative">
-        {/* Línea horizontal */}
         <div className="absolute left-0 right-0 top-[13px] h-0.5 bg-white/20" />
 
         <div className="grid grid-cols-4 gap-6 relative">
@@ -34,15 +34,20 @@ export default function FavaloroTimeline({ biografia }: FavaloroTimelineProps) {
               }}
               className="flex flex-col items-center"
             >
-              <div className="w-7 h-7 rounded-full bg-[#7BA8D9] border-4 border-slate-900 shadow-md shadow-[#7BA8D9]/50 relative z-10 flex items-center justify-center">
-                <span className="text-white text-[10px] font-bold">{i + 1}</span>
+              <div
+                className="w-7 h-7 rounded-full bg-white border-[3px] border-[#441ebd] relative z-10 flex items-center justify-center"
+                style={{ boxShadow: '0 0 14px rgba(68, 30, 189, 0.5)' }}
+              >
+                <span className="text-[#441ebd] text-[10px] font-bold">
+                  {i + 1}
+                </span>
               </div>
               <div className="w-0.5 h-6 bg-white/20" />
-              <div className="mt-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-5 shadow-xl border-t-4 border-t-[#7BA8D9] w-full">
-                <h4 className="font-bold text-amber-300 text-sm md:text-base leading-snug mb-2">
+              <div className="mt-2 bg-white/5 backdrop-blur-md border border-[#4ECDC4]/20 rounded-xl p-5 shadow-xl border-t-4 border-t-[#4ECDC4] w-full">
+                <h4 className="font-bold text-[#4ECDC4] text-sm md:text-base leading-snug mb-2">
                   {etapa.etapa}
                 </h4>
-                <p className="text-xs md:text-sm text-slate-200 leading-relaxed">
+                <p className="text-xs md:text-sm text-[#A5F3EA] leading-relaxed">
                   {etapa.texto}
                 </p>
               </div>
@@ -68,14 +73,19 @@ export default function FavaloroTimeline({ biografia }: FavaloroTimelineProps) {
               }}
               className="relative"
             >
-              <div className="absolute -left-[32px] top-2 w-7 h-7 rounded-full bg-[#7BA8D9] border-4 border-slate-900 shadow-md shadow-[#7BA8D9]/50 z-10 flex items-center justify-center">
-                <span className="text-white text-[10px] font-bold">{i + 1}</span>
+              <div
+                className="absolute -left-[32px] top-2 w-7 h-7 rounded-full bg-white border-[3px] border-[#441ebd] z-10 flex items-center justify-center"
+                style={{ boxShadow: '0 0 14px rgba(68, 30, 189, 0.5)' }}
+              >
+                <span className="text-[#441ebd] text-[10px] font-bold">
+                  {i + 1}
+                </span>
               </div>
-              <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-5 shadow-xl border-l-4 border-l-[#7BA8D9]">
-                <h4 className="font-bold text-amber-300 text-base mb-2">
+              <div className="bg-white/5 backdrop-blur-md border border-[#4ECDC4]/20 rounded-xl p-5 shadow-xl border-l-4 border-l-[#4ECDC4]">
+                <h4 className="font-bold text-[#4ECDC4] text-base mb-2">
                   {etapa.etapa}
                 </h4>
-                <p className="text-sm text-slate-200 leading-relaxed">
+                <p className="text-sm text-[#A5F3EA] leading-relaxed">
                   {etapa.texto}
                 </p>
               </div>

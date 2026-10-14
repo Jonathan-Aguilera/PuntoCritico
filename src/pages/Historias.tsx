@@ -9,12 +9,16 @@ interface HistoriasProps {
   preview?: boolean
 }
 
+// En preview mostramos solo esta cantidad de testimonios.
+const PREVIEW_TESTIMONIOS = 3
+
 export default function Historias({ preview = false }: HistoriasProps) {
   const favaloro = getFavaloro()
   const testimonios = getTestimonios()
 
-  // En preview, solo 3 testimonios
-  const testimoniosAMostrar = preview ? testimonios.slice(0, 3) : testimonios
+  const testimoniosAMostrar = preview
+    ? testimonios.slice(0, PREVIEW_TESTIMONIOS)
+    : testimonios
 
   return (
     <ViewContainer>
@@ -26,13 +30,14 @@ export default function Historias({ preview = false }: HistoriasProps) {
               : 'text-5xl sm:text-6xl md:text-7xl lg:text-8xl'
           }`}
         >
-          Historias
+          {/* Título*/}
+          Vidas detrás del dato
         </h1>
       </section>
 
-      <p className="text-center text-base md:text-lg text-slate-200 max-w-3xl mx-auto mb-16 leading-relaxed">
-        Detrás de cada estadística hay una vida. Detrás de cada vida, una
-        historia.
+      <p className="text-center text-base md:text-lg text-[#A5F3EA] max-w-3xl mx-auto mb-16 leading-relaxed">
+        {/* Subtítulo*/}
+        Detrás de cada estadística hay una vida. Y detrás de cada vida, una historia que vale contar.
       </p>
 
       {/* Favaloro completo solo en la vista dedicada */}
@@ -44,12 +49,12 @@ export default function Historias({ preview = false }: HistoriasProps) {
         </>
       )}
 
-      <section className={preview ? '' : 'pt-10 border-t border-white/15'}>
+      <section className={preview ? '' : 'pt-10 border-t border-[#4ECDC4]/20'}>
         <div className="text-center mb-10">
-          <p className="text-xs uppercase tracking-[0.3em] font-semibold text-amber-300 mb-3">
+          <p className="text-xs uppercase tracking-[0.3em] font-semibold text-[#4ECDC4] mb-3">
             Voces reales
           </p>
-          <h2 className="text-2xl md:text-4xl font-bold text-white leading-tight">
+          <h2 className="text-2xl md:text-4xl font-bold text-[#A5F3EA] leading-tight">
             Lo que la gente vivió
           </h2>
         </div>

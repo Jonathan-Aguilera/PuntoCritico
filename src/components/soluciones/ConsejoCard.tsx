@@ -30,7 +30,7 @@ export default function ConsejoCard({
         delay: index * 0.12,
         ease: [0.16, 1, 0.3, 1],
       }}
-      className={`relative bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-5 md:p-6 shadow-xl border-l-4 ${accent.border} hover:bg-white/8 hover:border-white/20 transition-all duration-300`}
+      className={`relative bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-5 md:p-6 shadow-xl border-l-4 ${accent.border} hover:bg-white/8 hover:border-white/20 transition-all duration-300 h-full`}
     >
       {/* Número decorativo grande, semitransparente */}
       <span
@@ -40,12 +40,12 @@ export default function ConsejoCard({
       </span>
 
       {/* Consejo principal */}
-      <p className="text-base md:text-lg font-semibold text-white leading-snug pr-10 mb-3">
+      <p className="text-base md:text-lg font-semibold text-[#A5F3EA] leading-snug pr-10 mb-3">
         {consejo.texto}
       </p>
 
       {/* Evidencia */}
-      <p className="text-sm text-slate-300 leading-relaxed mb-4">
+      <p className="text-sm text-[#A5F3EA]/70 leading-relaxed mb-4">
         {consejo.evidencia}
       </p>
 

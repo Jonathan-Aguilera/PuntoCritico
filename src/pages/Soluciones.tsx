@@ -6,11 +6,14 @@ interface SolucionesProps {
   preview?: boolean
 }
 
+// En preview mostramos este límite de consejos por categoría.
+const PREVIEW_CONSEJOS_POR_CATEGORIA = 2
+
 export default function Soluciones({ preview = false }: SolucionesProps) {
   const data = getSoluciones()
 
-  // En preview, solo la primera categoría
-  const categorias = preview ? data.categorias.slice(0, 1) : data.categorias
+  // En preview mostramos TODAS las categorías, pero limitamos los consejos.
+  const categorias = data.categorias
 
   return (
     <ViewContainer>
@@ -22,30 +25,40 @@ export default function Soluciones({ preview = false }: SolucionesProps) {
               : 'text-5xl sm:text-6xl md:text-7xl lg:text-8xl'
           }`}
         >
-          Soluciones
+          {/* Título */}
+          Qué ayuda, y que no
         </h1>
       </section>
 
       <div className="text-center max-w-3xl mx-auto mb-16">
-        <p className="text-base md:text-lg text-slate-200 leading-relaxed">
+        <p className="text-base md:text-lg text-[#A5F3EA] leading-relaxed">
+          {/* Subtítulo
+              Actualmente se toma de data.intro. */}
           {data.intro}
         </p>
       </div>
 
       {categorias.map((categoria) => (
-        <CategoriaBloque key={categoria.id} categoria={categoria} />
+        <CategoriaBloque
+          key={categoria.id}
+          categoria={categoria}
+          limite={preview ? PREVIEW_CONSEJOS_POR_CATEGORIA : undefined}
+        />
       ))}
 
-      {!preview && (
-        <div className="text-center pt-10 mt-8 border-t border-white/15">
-          <p className="text-2xl md:text-3xl font-bold text-amber-300 leading-tight">
-            {data.cierre.frase}
-          </p>
-          <p className="text-sm md:text-base text-slate-300 mt-4 max-w-2xl mx-auto leading-relaxed">
-            {data.cierre.subtexto}
-          </p>
-        </div>
-      )}
+      {/* ── Cierre (visible en vista completa Y en preview) ──
+          Reemplaza el par "frase + subtexto" por una reflexión simple.
+          Opciones (elegí una y borrá el resto):
+            A) "No hace falta hacer todo. Alcanza con empezar por algo, y sostenerlo."
+            B) "Las cosas que más ayudan suelen ser las menos espectaculares. Y las más difíciles de sostener."
+            C) "Cambiar el pronóstico no depende de un solo gesto. Depende de muchos pequeños, repetidos en el tiempo."
+            D) "Hay margen. Siempre hay margen. Y la mayoría está en lo cotidiano."
+      */}
+      <div className="text-center pt-10 mt-8 border-t border-white/15">
+        <p className="text-lg md:text-xl text-[#A5F3EA] font-medium leading-relaxed max-w-2xl mx-auto">
+          No hace falta hacer todo. Alcanza con empezar por algo, y sostenerlo.
+        </p>
+      </div>
 
       {preview && (
         <div className="text-center mt-12">

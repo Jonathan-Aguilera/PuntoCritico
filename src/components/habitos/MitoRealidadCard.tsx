@@ -22,30 +22,30 @@ export default function MitoRealidadCard({
       }}
       className="grid grid-cols-1 md:grid-cols-2 gap-0 rounded-xl overflow-hidden shadow-xl border border-white/10"
     >
-      {/* ── Mito ── */}
-      <div className="bg-red-500/10 backdrop-blur-md p-5 md:p-6 border-b-2 md:border-b-0 md:border-r-2 border-red-400/20">
+      {/* ── Mito: coral ── */}
+      <div className="bg-[#FF6B6B]/10 backdrop-blur-md p-5 md:p-6 border-b-2 md:border-b-0 md:border-r-2 border-[#FF6B6B]/20">
         <div className="flex items-center gap-2 mb-3">
-          <span className="w-6 h-6 rounded-full bg-red-500 text-white flex items-center justify-center text-sm font-bold shadow-md">
+          <span className="w-6 h-6 rounded-full bg-[#FF6B6B] text-white flex items-center justify-center text-sm font-bold shadow-md">
             ✕
           </span>
-          <span className="text-xs font-bold uppercase tracking-wider text-red-300">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#FF8A8A]">
             Mito
           </span>
         </div>
-        <p className="text-slate-100 font-medium leading-snug">{item.mito}</p>
+        <p className="text-[#A5F3EA] font-medium leading-snug">{item.mito}</p>
       </div>
 
-      {/* ── Realidad ── */}
-      <div className="bg-emerald-500/10 backdrop-blur-md p-5 md:p-6">
+      {/* ── Realidad: menta ── */}
+      <div className="bg-[#5DD9A8]/10 backdrop-blur-md p-5 md:p-6">
         <div className="flex items-center gap-2 mb-3">
-          <span className="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-sm font-bold shadow-md">
+          <span className="w-6 h-6 rounded-full bg-[#5DD9A8] text-white flex items-center justify-center text-sm font-bold shadow-md">
             ✓
           </span>
-          <span className="text-xs font-bold uppercase tracking-wider text-emerald-300">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#7FE4BD]">
             Realidad
           </span>
         </div>
-        <p className="text-slate-100 leading-snug">{item.realidad}</p>
+        <p className="text-[#A5F3EA] leading-snug">{item.realidad}</p>
       </div>
     </motion.article>
   )

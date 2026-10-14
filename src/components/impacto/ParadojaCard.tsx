@@ -45,37 +45,37 @@ export default function ParadojaCard({ card, index = 0 }: Props) {
       index={index}
     >
       {/* Comparación 1:1 con tintes verde lima y verde menta */}
-      <div className="grid grid-cols-2 gap-4 mb-8">
-        <div className="bg-[#A8E063]/10 border border-[#A8E063]/30 rounded-xl p-5 text-center">
-          <p className="text-4xl md:text-5xl font-bold text-[#B8E878]">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-8">
+        <div className="bg-[#A8E063]/10 border border-[#A8E063]/30 rounded-xl p-3 sm:p-5 text-center min-w-0">
+          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#B8E878] leading-tight break-words">
             {datos.cardiologos_por_millon}
           </p>
-          <p className="text-xs md:text-sm text-[#D4EFB0] mt-2">
+          <p className="text-[11px] sm:text-xs md:text-sm text-[#D4EFB0] mt-2 leading-tight">
             cardiólogos por millón (Argentina)
           </p>
         </div>
-        <div className="bg-[#5DD9A8]/10 border border-[#5DD9A8]/30 rounded-xl p-5 text-center">
-          <p className="text-4xl md:text-5xl font-bold text-[#7FE4BD]">
+        <div className="bg-[#5DD9A8]/10 border border-[#5DD9A8]/30 rounded-xl p-3 sm:p-5 text-center min-w-0">
+          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#7FE4BD] leading-tight break-words">
             {datos.cardiologos_optimo_oms}
           </p>
-          <p className="text-xs md:text-sm text-[#B0EED6] mt-2">
+          <p className="text-[11px] sm:text-xs md:text-sm text-[#B0EED6] mt-2 leading-tight">
             recomendado por la OMS
           </p>
         </div>
       </div>
 
       {/* Concentración territorial con tinte verde menta */}
-      <div className="bg-[#5DD9A8]/10 border border-[#5DD9A8]/30 rounded-xl p-5 text-center mb-8">
-        <p className="text-4xl md:text-5xl font-bold text-[#7FE4BD]">
+      <div className="bg-[#5DD9A8]/10 border border-[#5DD9A8]/30 rounded-xl p-3 sm:p-5 text-center mb-8">
+        <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#7FE4BD] leading-tight break-words">
           {datos.concentracion_caba_ba}%
         </p>
-        <p className="text-xs md:text-sm text-[#B0EED6] mt-2">
+        <p className="text-[11px] sm:text-xs md:text-sm text-[#B0EED6] mt-2 leading-tight">
           de los {datos.centros_rehabilitacion_total} centros de rehabilitación
           están en CABA y Buenos Aires
         </p>
       </div>
 
-      {/* Distribución por región: barras horizontales verde menta/lima */}
+      {/* Distribución por región: barras horizontales, desplazadas a la izquierda */}
       <div>
         <h3 className="text-sm font-semibold text-[#A5F3EA] mb-3">
           Centros de rehabilitación cardiovascular por región
@@ -85,7 +85,7 @@ export default function ParadojaCard({ card, index = 0 }: Props) {
             <BarChart
               data={dataRegiones}
               layout="vertical"
-              margin={{ top: 10, right: 30, left: 20, bottom: 5 }}
+              margin={{ top: 10, right: 15, left: 0, bottom: 5 }}
             >
               <CartesianGrid
                 strokeDasharray="3 3"
@@ -102,7 +102,7 @@ export default function ParadojaCard({ card, index = 0 }: Props) {
                 type="category"
                 dataKey="region"
                 tick={{ fontSize: 11, fill: '#B0EED6' }}
-                width={130}
+                width={95}
                 axisLine={{ stroke: 'rgba(93, 217, 168, 0.3)' }}
                 tickLine={{ stroke: 'rgba(93, 217, 168, 0.3)' }}
               />
@@ -139,7 +139,11 @@ export default function ParadojaCard({ card, index = 0 }: Props) {
                 {dataRegiones.map((entry, i) => (
                   <Cell
                     key={i}
-                    fill={entry.valor === maxValor ? COLOR_PRINCIPAL : COLOR_SECUNDARIO}
+                    fill={
+                      entry.valor === maxValor
+                        ? COLOR_PRINCIPAL
+                        : COLOR_SECUNDARIO
+                    }
                   />
                 ))}
               </Bar>

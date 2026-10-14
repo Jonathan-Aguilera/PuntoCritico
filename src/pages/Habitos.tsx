@@ -9,7 +9,9 @@ interface HabitosProps {
 
 export default function Habitos({ preview = false }: HabitosProps) {
   const mitos = getMitosRealidades()
-  const mitosAMostrar = preview ? mitos.slice(0, 2) : mitos
+  // En preview mostramos 4 mitos; en la vista completa, todos.
+  const PREVIEW_MITOS = 4
+  const mitosAMostrar = preview ? mitos.slice(0, PREVIEW_MITOS) : mitos
 
   return (
     <ViewContainer>
@@ -20,22 +22,24 @@ export default function Habitos({ preview = false }: HabitosProps) {
               : 'text-5xl sm:text-6xl md:text-7xl lg:text-8xl'
             }`}
         >
-          Hábitos
+          {/* Título */}
+          Creer o saber
         </h1>
       </section>
 
-      <p className="text-center text-base md:text-lg text-slate-200 max-w-3xl mx-auto mb-16 leading-relaxed">
-        Mucho de lo que creemos saber sobre el corazón es falso.
+      <p className="text-center text-base md:text-lg text-[#A5F3EA] max-w-3xl mx-auto mb-16 leading-relaxed">
+        {/* Subtítulo*/}
+        No todo lo que se repite sobre el corazón es cierto. Tampoco todo es falso. Vale la pena distinguirlo.
       </p>
 
       {/* La encuesta solo se muestra en la vista completa */}
       {!preview && <EncuestaHabitos />}
 
       <div>
-        <h2 className="text-2xl md:text-3xl font-bold text-amber-300 mb-2 text-center">
+        <h2 className="text-2xl md:text-3xl font-bold text-[#4ECDC4] mb-2 text-center">
           Mitos y realidades
         </h2>
-        <p className="text-slate-300 mb-10 leading-relaxed text-center max-w-3xl mx-auto">
+        <p className="text-[#A5F3EA]/80 mb-10 leading-relaxed text-center max-w-3xl mx-auto">
           Algunas creencias populares que conviene revisar.
         </p>
 
@@ -45,6 +49,24 @@ export default function Habitos({ preview = false }: HabitosProps) {
           ))}
         </div>
       </div>
+
+      {/* ── Conclusión (se muestra en preview y en la vista completa) ──
+          Opciones de cierre, elegí una y borrá el resto:
+            A) "Estos mitos circulan en consultorios, en mesas familiares, en redes.
+                Algunos tienen parte de razón. Otros no. La diferencia importa."
+            B) "Lo que se repite no siempre se sostiene. Lo que se sostiene no siempre se repite."
+            C) "¿Cuántas de estas las tenías como ciertas?"
+      */}
+      <section className="mt-20 max-w-3xl mx-auto">
+        <div className="h-px bg-[#4ECDC4]/20 mb-10 mx-auto w-24" />
+        <p className="text-base md:text-lg text-[#A5F3EA] leading-relaxed text-justify mb-4">
+          Estos mitos circulan en consultorios, en mesas familiares, en redes.
+          Algunos tienen parte de razón. Otros no. La diferencia importa.
+        </p>
+        <p className="text-base md:text-lg text-[#4ECDC4] font-semibold text-center mt-6">
+          ¿Cuántas de estas las tenías como ciertas?
+        </p>
+      </section>
 
       {preview && (
         <div className="text-center mt-12">
