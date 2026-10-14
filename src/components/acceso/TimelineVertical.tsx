@@ -86,7 +86,7 @@ export default function TimelineVertical({ items }: TimelineVerticalProps) {
                 </div>
 
                 {/* Centro: spacer (la barra pasa por acá) */}
-                <div className="w-2 flex-shrink-0" />
+                <div className="w-2 shrink-0" />
 
                 {/* Columna derecha: flecha ← + botón (solo si es right) */}
                 <div className="flex-1 flex justify-start items-center gap-2 pl-3">

@@ -25,7 +25,7 @@ export default function TimelineCard({
       className="bg-white/5 backdrop-blur-md border border-[#4ECDC4]/20 rounded-xl shadow-xl overflow-hidden flex flex-col h-full hover:border-[#4ECDC4]/50 hover:shadow-[0_0_30px_rgba(78,205,196,0.15)] transition-[border-color,box-shadow] duration-300"
     >
       {/* ── Imagen (formato más horizontal, 3:2) ── */}
-      <div className="relative aspect-[3/2] bg-slate-900/50 overflow-hidden">
+      <div className="relative aspect-3/2 bg-slate-900/50 overflow-hidden">
         <img
           src={imagenSrc}
           alt={item.imagen.titulo}

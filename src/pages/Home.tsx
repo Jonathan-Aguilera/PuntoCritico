@@ -12,14 +12,14 @@ export default function Home() {
       <div className="w-full px-4 py-10 md:py-16 flex flex-col gap-8">
 
         {/* ─── Bloque 1: La pregunta ─── */}
-        <section className="w-full max-w-[1400px] mx-auto px-2 md:px-6 py-8 md:py-12 text-center">
-          <h1 className="font-['Orbitron'] font-bold leading-[1.15] tracking-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl pt-3 text-center bg-gradient-to-r from-[#7BA8D9] to-[#C8E0FF] bg-clip-text text-transparent">
+        <section className="w-full max-w-350 mx-auto px-2 md:px-6 py-8 md:py-12 text-center">
+          <h1 className="font-['Orbitron'] font-bold leading-[1.15] tracking-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl pt-3 text-center bg-linear-to-r from-[#7BA8D9] to-[#C8E0FF] bg-clip-text text-transparent">
             ¿Por qué seguimos muriendo de lo que ya sabemos prevenir?
           </h1>
         </section>
 
         {/* ─── Bloque 2: La "carpeta" con toda la info ─── */}
-        <section className="w-full max-w-[1400px] mx-auto px-4">
+        <section className="w-full max-w-350 mx-auto px-4">
           <div className="relative">
 
             {/* Pestaña tipo folder */}
@@ -92,7 +92,7 @@ export default function Home() {
               <div className="h-px bg-white/10 mb-8" />
 
               {/* CTA al mapa */}
-              <div className="bg-gradient-to-br from-amber-500/20 to-orange-600/20 border border-amber-400/30 px-6 md:px-10 py-8 md:py-10 text-center">
+              <div className="bg-linear-to-br from-amber-500/20 to-orange-600/20 border border-amber-400/30 px-6 md:px-10 py-8 md:py-10 text-center">
                 <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
                   Explorá los datos por tu cuenta
                 </h3>
@@ -138,7 +138,7 @@ export default function Home() {
 
         <section>
           {/* CTA al mapa */}
-          <div className="bg-gradient-to-br from-amber-500/20 to-orange-600/20 border border-amber-400/30 px-6 md:px-10 py-8 md:py-10 text-center">
+          <div className="bg-linear-to-br from-amber-500/20 to-orange-600/20 border border-amber-400/30 px-6 md:px-10 py-8 md:py-10 text-center">
             <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
               Explorá los datos por tu cuenta
             </h3>

@@ -59,9 +59,7 @@ const PRELOAD_TASKS: PreloadTask[] = [
 ]
 
 /* ══════════════════════════════════════════════════════════════
- *  Tareas FICTICIAS del mapa (simulan ~5s con pausas naturales)
- *  Reutiliza LoadingScreen: cada tarea aporta su minDuration y
- *  el easeOutCubic genera la sensación de "pausa" entre tareas.
+ *  Tareas FICTICIAS del mapa
  * ══════════════════════════════════════════════════════════════ */
 const MAP_LOADING_TASKS: PreloadTask[] = [
   { id: 'geo-init', label: 'Inicializando visor geoespacial…', run: () => {}, minDuration: 900 },
@@ -79,6 +77,8 @@ type Phase =
   | 'mapExit'
   | 'mapLoading'
   | 'mapEnter'
+  | 'returnExit'
+  | 'returnEnter'
 
 function AppContent() {
   const navigate = useNavigate()
@@ -102,7 +102,7 @@ function AppContent() {
     return () => window.removeEventListener('trigger-intro', handler)
   }, [])
 
-  /* ─── Transiciones de la intro inicial ─── */
+  /* ─── Transiciones iniciales ─── */
   const handleStart = () => setPhase('loading')
   const handleLoadingComplete = () => setPhase('hudIntro')
   const handleIntroComplete = () => {
@@ -118,8 +118,22 @@ function AppContent() {
   const handleMapExitComplete = () => setPhase('mapLoading')
   const handleMapLoadingComplete = () => setPhase('mapEnter')
   const handleMapEnterComplete = () => {
-    // Navegamos y hacemos visible la vista al mismo tiempo
     navigate('/mapa')
+    setPhase('done')
+  }
+
+  /* ─── Transición de vuelta al inicio ─── */
+  const startMapReturn = useCallback(() => {
+    setPhase('returnExit')
+  }, [])
+
+  const handleReturnExitComplete = () => {
+    // Navegamos AHORA, mientras el HudIntro todavía tapa la pantalla.
+    // Cuando el marco se expanda, el contenido detrás ya es la home.
+    navigate('/')
+    setPhase('returnEnter')
+  }
+  const handleReturnEnterComplete = () => {
     setPhase('done')
   }
 
@@ -127,7 +141,7 @@ function AppContent() {
 
   return (
     <IntroContext.Provider value={{ introDone }}>
-      <MapTransitionContext.Provider value={{ startMapTransition }}>
+      <MapTransitionContext.Provider value={{ startMapTransition, startMapReturn }}>
         <Routes>
           {/* Rutas normales: MainLayout */}
           <Route element={<MainLayout />}>
@@ -176,6 +190,12 @@ function AppContent() {
           )}
           {phase === 'mapEnter' && (
             <HudIntro key="mapEnter" onComplete={handleMapEnterComplete} />
+          )}
+          {phase === 'returnExit' && (
+            <HudExit key="returnExit" onComplete={handleReturnExitComplete} />
+          )}
+          {phase === 'returnEnter' && (
+            <HudIntro key="returnEnter" onComplete={handleReturnEnterComplete} />
           )}
         </AnimatePresence>
       </MapTransitionContext.Provider>

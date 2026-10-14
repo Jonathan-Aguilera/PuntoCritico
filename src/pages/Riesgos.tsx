@@ -15,7 +15,7 @@ export default function Riesgos({ preview = false }: RiesgosProps) {
       {/* ── Título grande con degradado ── */}
       <section className="text-center mb-6">
         <h1
-          className={`font-bold leading-[1.1] tracking-tight bg-gradient-to-r from-[#7BA8D9] to-[#C8E0FF] bg-clip-text text-transparent ${
+          className={`font-bold leading-[1.1] tracking-tight bg-linear-to-r from-[#7BA8D9] to-[#C8E0FF] bg-clip-text text-transparent ${
             preview
               ? 'text-3xl sm:text-4xl md:text-5xl'
               : 'text-5xl sm:text-6xl md:text-7xl lg:text-8xl'

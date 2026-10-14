@@ -136,7 +136,7 @@ export default function LoadingScreen({ onComplete, tasks }: LoadingScreenProps)
     <motion.div
       initial={{ opacity: 1 }}
       exit={{ opacity: 0, transition: { duration: 0.4 } }}
-      className="fixed inset-0 z-[200] bg-black flex flex-col items-center justify-center"
+      className="fixed inset-0 z-200 bg-black flex flex-col items-center justify-center"
     >
       {/* Fondos */}
       <div
@@ -165,7 +165,7 @@ export default function LoadingScreen({ onComplete, tasks }: LoadingScreenProps)
       </motion.h1>
 
       {/* Barra de celdas */}
-      <div className="relative w-[320px] flex gap-[3px]">
+      <div className="relative w-[320px] flex gap-0.75">
         {Array.from({ length: CELLS }).map((_, i) => {
           const cellStart = i / CELLS
           const cellEnd = (i + 1) / CELLS

@@ -60,7 +60,7 @@ export default function ImpactoSociocultural({ card, index = 0 }: Props) {
       {/* Números grandes con tinte coral — ajustados para mobile */}
       <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-8">
         <div className="bg-[#FF6B6B]/10 border border-[#FF6B6B]/30 rounded-xl p-3 sm:p-5 text-center min-w-0">
-          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#FF8A8A] leading-tight break-words">
+          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#FF8A8A] leading-tight wrap-break-word">
             {totalMuertes.toLocaleString('es-AR')}
           </p>
           <p className="text-[11px] sm:text-xs md:text-sm text-[#FFD0D0] mt-2 leading-tight">
@@ -68,7 +68,7 @@ export default function ImpactoSociocultural({ card, index = 0 }: Props) {
           </p>
         </div>
         <div className="bg-[#FF9F45]/10 border border-[#FF9F45]/30 rounded-xl p-3 sm:p-5 text-center min-w-0">
-          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#FFB56B] leading-tight break-words">
+          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#FFB56B] leading-tight wrap-break-word">
             {datos.porcentaje_del_total}%
           </p>
           <p className="text-[11px] sm:text-xs md:text-sm text-[#FFD9B8] mt-2 leading-tight">
@@ -145,7 +145,7 @@ export default function ImpactoSociocultural({ card, index = 0 }: Props) {
           Desglose por causa (2022)
         </h3>
         <div className="flex flex-col md:flex-row md:items-center gap-6">
-          <div className="h-64 w-full md:w-1/2 md:flex-shrink-0">
+          <div className="h-64 w-full md:w-1/2 md:shrink-0">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
@@ -204,7 +204,7 @@ export default function ImpactoSociocultural({ card, index = 0 }: Props) {
                 onMouseLeave={() => setActivePieIndex(null)}
               >
                 <span
-                  className="w-3.5 h-3.5 rounded-sm flex-shrink-0"
+                  className="w-3.5 h-3.5 rounded-sm shrink-0"
                   style={{
                     backgroundColor:
                       COLORES_DESGLOSE[i % COLORES_DESGLOSE.length],

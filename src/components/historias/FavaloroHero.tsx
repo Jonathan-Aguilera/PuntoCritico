@@ -23,7 +23,7 @@ export default function FavaloroHero({ data }: FavaloroHeroProps) {
 
       {/* ── Capa 2: aura radial dorada ── */}
       <div
-        className="absolute inset-0 z-[1] pointer-events-none"
+        className="absolute inset-0 z-1 pointer-events-none"
         style={{
           background:
             'radial-gradient(ellipse 55% 45% at 50% 30%, rgba(255, 201, 60, 0.14) 0%, rgba(196, 163, 255, 0.06) 40%, transparent 75%)',
@@ -32,7 +32,7 @@ export default function FavaloroHero({ data }: FavaloroHeroProps) {
 
       {/* ── Capa 3: textura de puntos ── */}
       <div
-        className="absolute inset-0 z-[2] opacity-[0.05] pointer-events-none"
+        className="absolute inset-0 z-2 opacity-[0.05] pointer-events-none"
         style={{
           backgroundImage:
             'radial-gradient(circle at 20% 30%, white 1px, transparent 1px), radial-gradient(circle at 70% 60%, white 1px, transparent 1px)',
@@ -46,11 +46,11 @@ export default function FavaloroHero({ data }: FavaloroHeroProps) {
         <div className="text-center mb-12">
           {/* Etiqueta "In Memoriam" */}
           <div className="inline-flex items-center gap-3 text-[#FFC93C]/85 mb-6">
-            <span className="w-12 h-px bg-gradient-to-r from-transparent to-[#FFC93C]/70" />
+            <span className="w-12 h-px bg-linear-to-r from-transparent to-[#FFC93C]/70" />
             <span className="text-xs md:text-sm uppercase tracking-[0.35em] font-semibold">
               In Memoriam
             </span>
-            <span className="w-12 h-px bg-gradient-to-l from-transparent to-[#FFC93C]/70" />
+            <span className="w-12 h-px bg-linear-to-l from-transparent to-[#FFC93C]/70" />
           </div>
 
           {/* ── Corazón con espacio dedicado ── */}
@@ -108,7 +108,7 @@ export default function FavaloroHero({ data }: FavaloroHeroProps) {
               <img
                 src={favaloroRetrato}
                 alt={data.imagen_retrato.titulo}
-                className="w-56 md:w-72 rounded object-cover grayscale-[15%]"
+                className="w-56 md:w-72 rounded object-cover grayscale-15"
               />
             </div>
           </div>

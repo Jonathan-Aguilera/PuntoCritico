@@ -18,7 +18,7 @@ export default function FavaloroTimeline({ biografia }: FavaloroTimelineProps) {
 
       {/* ── Desktop: horizontal ── */}
       <div className="hidden lg:block relative">
-        <div className="absolute left-0 right-0 top-[13px] h-0.5 bg-white/20" />
+        <div className="absolute left-0 right-0 top-3.25 h-0.5 bg-white/20" />
 
         <div className="grid grid-cols-4 gap-6 relative">
           {biografia.map((etapa, i) => (
@@ -58,7 +58,7 @@ export default function FavaloroTimeline({ biografia }: FavaloroTimelineProps) {
 
       {/* ── Móvil/tablet: vertical ── */}
       <div className="lg:hidden relative pl-9">
-        <div className="absolute left-[13px] top-3 bottom-3 w-0.5 bg-white/20" />
+        <div className="absolute left-3.25 top-3 bottom-3 w-0.5 bg-white/20" />
         <div className="space-y-6">
           {biografia.map((etapa, i) => (
             <motion.div
@@ -74,7 +74,7 @@ export default function FavaloroTimeline({ biografia }: FavaloroTimelineProps) {
               className="relative"
             >
               <div
-                className="absolute -left-[32px] top-2 w-7 h-7 rounded-full bg-white border-[3px] border-[#441ebd] z-10 flex items-center justify-center"
+                className="absolute -left-8 top-2 w-7 h-7 rounded-full bg-white border-[3px] border-[#441ebd] z-10 flex items-center justify-center"
                 style={{ boxShadow: '0 0 14px rgba(68, 30, 189, 0.5)' }}
               >
                 <span className="text-[#441ebd] text-[10px] font-bold">

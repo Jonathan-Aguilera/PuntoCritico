@@ -109,7 +109,7 @@ export default function MainLayout() {
         >
           <div className="w-full h-full flex flex-col relative">
             <motion.div
-              className="relative shrink-0 z-[60]"
+              className="relative shrink-0 z-60"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: introDone ? 1 : 0, y: introDone ? 0 : -10 }}
               transition={t(0.4)}
@@ -118,7 +118,7 @@ export default function MainLayout() {
             </motion.div>
 
             <div
-              className="pointer-events-none absolute left-0 right-0 h-12 z-[55]"
+              className="pointer-events-none absolute left-0 right-0 h-12 z-55"
               style={{
                 top: '40px',
                 background:

@@ -31,7 +31,7 @@ export default function TimelineHorizontal({ items }: TimelineHorizontalProps) {
         {items.map((item, i) => (
           <div
             key={`top-${item.id}`}
-            className="flex flex-col justify-end items-center pb-2 min-h-[300px]"
+            className="flex flex-col justify-end items-center pb-2 min-h-75"
           >
             {i % 2 === 0 && (
               <>
@@ -91,7 +91,7 @@ export default function TimelineHorizontal({ items }: TimelineHorizontalProps) {
         {items.map((item, i) => (
           <div
             key={`bot-${item.id}`}
-            className="flex flex-col justify-start items-center pt-2 min-h-[300px]"
+            className="flex flex-col justify-start items-center pt-2 min-h-75"
           >
             {i % 2 === 1 && (
               <>

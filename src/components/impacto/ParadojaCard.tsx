@@ -47,7 +47,7 @@ export default function ParadojaCard({ card, index = 0 }: Props) {
       {/* Comparación 1:1 con tintes verde lima y verde menta */}
       <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-8">
         <div className="bg-[#A8E063]/10 border border-[#A8E063]/30 rounded-xl p-3 sm:p-5 text-center min-w-0">
-          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#B8E878] leading-tight break-words">
+          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#B8E878] leading-tight wrap-break-word">
             {datos.cardiologos_por_millon}
           </p>
           <p className="text-[11px] sm:text-xs md:text-sm text-[#D4EFB0] mt-2 leading-tight">
@@ -55,7 +55,7 @@ export default function ParadojaCard({ card, index = 0 }: Props) {
           </p>
         </div>
         <div className="bg-[#5DD9A8]/10 border border-[#5DD9A8]/30 rounded-xl p-3 sm:p-5 text-center min-w-0">
-          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#7FE4BD] leading-tight break-words">
+          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#7FE4BD] leading-tight wrap-break-word">
             {datos.cardiologos_optimo_oms}
           </p>
           <p className="text-[11px] sm:text-xs md:text-sm text-[#B0EED6] mt-2 leading-tight">
@@ -66,7 +66,7 @@ export default function ParadojaCard({ card, index = 0 }: Props) {
 
       {/* Concentración territorial con tinte verde menta */}
       <div className="bg-[#5DD9A8]/10 border border-[#5DD9A8]/30 rounded-xl p-3 sm:p-5 text-center mb-8">
-        <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#7FE4BD] leading-tight break-words">
+        <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#7FE4BD] leading-tight wrap-break-word">
           {datos.concentracion_caba_ba}%
         </p>
         <p className="text-[11px] sm:text-xs md:text-sm text-[#B0EED6] mt-2 leading-tight">

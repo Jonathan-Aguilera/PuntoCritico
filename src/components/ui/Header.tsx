@@ -170,7 +170,7 @@ export default function Header({ progress }: HeaderProps) {
                     exit={{ opacity: 0, y: -4, scale: 0.98 }}
                     transition={{ duration: 0.15 }}
                     className="absolute top-full right-0 mt-3 w-44 rounded-lg shadow-2xl overflow-hidden
-                               bg-[#6c12e2] border border-white/15 z-[70] p-1.5"
+                               bg-[#6c12e2] border border-white/15 z-70 p-1.5"
                   >
                     <ul className="flex flex-col gap-1">
                       {dropdownItems.map((item) => (
@@ -252,9 +252,9 @@ export default function Header({ progress }: HeaderProps) {
           aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
           className="p-2 mr-4 rounded hover:bg-white/10 transition"
         >
-          <div className="grid grid-cols-3 gap-[3px]">
+          <div className="grid grid-cols-3 gap-0.75">
             {Array.from({ length: 9 }).map((_, i) => (
-              <span key={i} className="block w-[4px] h-[4px] rounded-full bg-white" />
+              <span key={i} className="block w-1 h-1 rounded-full bg-white" />
             ))}
           </div>
         </button>
@@ -270,7 +270,7 @@ export default function Header({ progress }: HeaderProps) {
             exit={{ opacity: 0, x: 60, scale: 0.95 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="lg:hidden absolute top-full right-3 mt-2 w-56 rounded-lg shadow-2xl overflow-hidden
-             bg-[#6c12e2] border border-white/15 z-[70] p-1.5"
+             bg-[#6c12e2] border border-white/15 z-70 p-1.5"
           >
             <ul className="flex flex-col gap-1">
               {navItems.map((item) => (
