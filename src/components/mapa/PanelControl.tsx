@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import type { MapaData } from '../../data/types/mapa'
+import { esIndicadorAnual } from '../../data/services/mapaService'
 
 /* ── Iconos: mantené los que ya tenías ── */
 const IconMapPin = ({ className = 'w-4 h-4' }: { className?: string }) => (
@@ -75,6 +76,8 @@ export interface OpcionesPanel {
   anios: number[]
   enfermedades: string[]
   indicadores: string[]
+  /** Indicadores sin ningún dato en el dataset: se muestran deshabilitados. */
+  indicadoresSinDatos: string[]
 }
 
 interface PanelControlProps {
@@ -164,8 +167,9 @@ function Chip({ label, active = false, onClick }: { label: string; active?: bool
   )
 }
 
-function Select({ value, onChange, options, label }: {
+function Select({ value, onChange, options, label, deshabilitadas = [] }: {
   value: string; onChange?: (v: string) => void; options: string[]; label?: string
+  deshabilitadas?: string[]
 }) {
   return (
     <div className="space-y-1.5">
@@ -173,7 +177,14 @@ function Select({ value, onChange, options, label }: {
       <div className="relative">
         <select value={value} onChange={(e) => onChange?.(e.target.value)}
           className="w-full appearance-none bg-white/5 border border-white/15 rounded-md px-3 py-2 pr-8 text-xs text-[#A5F3EA] focus:outline-none focus:border-[#4ECDC4]/60 focus:bg-white/10 transition cursor-pointer">
-          {options.map((o) => (<option key={o} value={o} className="bg-[#241058] text-[#A5F3EA]">{o}</option>))}
+          {options.map((o) => {
+            const sinDatos = deshabilitadas.includes(o)
+            return (
+              <option key={o} value={o} disabled={sinDatos} className="bg-[#241058] text-[#A5F3EA]">
+                {sinDatos ? `${o} (sin datos)` : o}
+              </option>
+            )
+          })}
         </select>
         <span className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-[#A5F3EA]/50">
           <IconChevron className="w-3 h-3" />
@@ -186,6 +197,10 @@ function Select({ value, onChange, options, label }: {
 /* ═══════════════════ Componente principal ═══════════════════ */
 
 export default function PanelControl({ opciones, filtros, onChange, onAbrirCard, data }: PanelControlProps) {
+  // [ERROR DEPLOY VERCEL: Línea 188, Columna 82 en el repositorio remoto (HEAD)]
+  // En la versión committeada (HEAD), el parámetro 'data' se destruye en la firma
+  // pero NUNCA se lee en el cuerpo del componente (error TS6133: 'data' is declared
+  // but its value is never read). En esta versión local SÍ se usa en 'provinciasVisibles'.
   const [panelOpen, setPanelOpen] = useState(true)
 
   const update = <K extends keyof FiltrosMapa>(key: K, value: FiltrosMapa[K]) => {
@@ -205,10 +220,26 @@ export default function PanelControl({ opciones, filtros, onChange, onAbrirCard,
     } else {
       const next = filtros.anios.includes(a)
         ? filtros.anios.filter((x) => x !== a)
-        : [...filtros.anios, a].sort()
+        : [...filtros.anios, a].sort((x, y) => x - y)
+      if (next.length === 0) return // siempre debe quedar al menos un año
       update('anios', next)
     }
   }
+
+  // Al elegir una región, la lista de provincias se acota a esa región y se
+  // limpia la selección anterior (en una sola llamada para que no se pisen).
+  const cambiarRegion = (r: string) => {
+    onChange({ ...filtros, region: r, provincias: [] })
+  }
+
+  const provinciasVisibles = filtros.region === 'Todas'
+    ? opciones.provincias
+    : data.provincias
+        .filter((p) => p.region === filtros.region)
+        .map((p) => p.nombre)
+        .sort((a, b) => a.localeCompare(b, 'es'))
+
+  const indicadorAnual = esIndicadorAnual(filtros.indicador)
 
   // ✅ Fix: una sola llamada para que no se pisen los cambios
   const cambiarModoAnio = (m: 'unico' | 'rango') => {
@@ -279,7 +310,7 @@ export default function PanelControl({ opciones, filtros, onChange, onAbrirCard,
                   <label className="block text-[10px] uppercase tracking-wider text-[#A5F3EA]/60 font-semibold">Región</label>
                   <div className="flex flex-wrap gap-1.5">
                     {opciones.regiones.map((r) => (
-                      <Chip key={r} label={r} active={filtros.region === r} onClick={() => update('region', r)} />
+                      <Chip key={r} label={r} active={filtros.region === r} onClick={() => cambiarRegion(r)} />
                     ))}
                   </div>
                 </div>
@@ -290,7 +321,7 @@ export default function PanelControl({ opciones, filtros, onChange, onAbrirCard,
                       className="text-[10px] text-[#4ECDC4] hover:text-[#A5F3EA] transition">Limpiar</button>
                   </div>
                   <div className="max-h-44 overflow-y-auto rounded-md border border-white/10 bg-white/2 p-1">
-                    {opciones.provincias.map((p) => {
+                    {provinciasVisibles.map((p) => {
                       const activa = filtros.provincias.includes(p)
                       return (
                         <label key={p}
@@ -325,11 +356,18 @@ export default function PanelControl({ opciones, filtros, onChange, onAbrirCard,
                     </button>
                   ))}
                 </div>
-                <div className="flex flex-wrap gap-1.5 pt-1">
+                <div className={`flex flex-wrap gap-1.5 pt-1 transition-opacity ${indicadorAnual ? '' : 'opacity-40'}`}>
                   {opciones.anios.map((a) => (
                     <Chip key={a} label={String(a)} active={filtros.anios.includes(a)} onClick={() => toggleAnio(a)} />
                   ))}
                 </div>
+                <p className="text-[10px] text-[#A5F3EA]/50 leading-snug">
+                  {!indicadorAnual
+                    ? 'Este indicador no depende del año.'
+                    : filtros.modoAnio === 'rango' && filtros.anios.length > 1
+                      ? 'Se muestra el promedio anual de los años elegidos.'
+                      : ''}
+                </p>
                 <label className="flex items-center gap-2 pt-2 pb-2 cursor-pointer text-xs text-[#A5F3EA]/80">
                   <span className={`w-7 h-4 rounded-full p-0.5 transition ${filtros.comparar ? 'bg-[#C430E3]' : 'bg-white/15'}`}>
                     <span className={`block w-3 h-3 rounded-full bg-white transition-transform ${filtros.comparar ? 'translate-x-3' : 'translate-x-0'}`} />
@@ -354,7 +392,8 @@ export default function PanelControl({ opciones, filtros, onChange, onAbrirCard,
                       <IconInfo className="w-3 h-3" /> Info
                     </button>
                   </div>
-                  <Select value={filtros.indicador} onChange={(v) => update('indicador', v)} options={opciones.indicadores} />
+                  <Select value={filtros.indicador} onChange={(v) => update('indicador', v)}
+                    options={opciones.indicadores} deshabilitadas={opciones.indicadoresSinDatos} />
                 </div>
               </Seccion>
 

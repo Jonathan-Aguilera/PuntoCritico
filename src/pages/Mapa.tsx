@@ -1,9 +1,9 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import PanelControl, { type FiltrosMapa, type OpcionesPanel } from '../components/mapa/PanelControl'
 import Mapa3D from '../components/mapa/Mapa3D'
 import TutorialMapa from '../components/mapa/TutorialMapa'
 import CardExplicativa, { type CardContenido } from '../components/mapa/CardExplicativa'
-import { cargarMapaData, getMapaDataSync } from '../data/services/mapaService'
+import { cargarMapaData, getMapaDataSync, indicadoresSinDatos } from '../data/services/mapaService'
 import type { MapaData } from '../data/types/mapa'
 
 const FILTROS_INICIALES: FiltrosMapa = {
@@ -31,15 +31,17 @@ export default function Mapa() {
     setCard({ titulo, texto })
   }, [])
 
-  const opciones: OpcionesPanel | null = data
-    ? {
-        provincias: [...data.provincias].map((p) => p.nombre).sort(),
-        regiones: ['Todas', ...data.regiones],
-        anios: data.anios,
-        enfermedades: data.enfermedades_disponibles,
-        indicadores: data.indicadores_disponibles,
-      }
-    : null
+  const opciones = useMemo<OpcionesPanel | null>(() => {
+    if (!data) return null
+    return {
+      provincias: data.provincias.map((p) => p.nombre).sort((a, b) => a.localeCompare(b, 'es')),
+      regiones: ['Todas', ...data.regiones],
+      anios: data.anios,
+      enfermedades: data.enfermedades_disponibles,
+      indicadores: data.indicadores_disponibles,
+      indicadoresSinDatos: indicadoresSinDatos(data),
+    }
+  }, [data])
 
   return (
     <>
