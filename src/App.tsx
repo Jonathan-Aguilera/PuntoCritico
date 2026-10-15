@@ -17,6 +17,7 @@ import { SoundProvider } from './contexts/SoundContext'
 import BackgroundMusic from './components/audio/BackgroundMusic'
 import { IntroContext } from './contexts/IntroContext'
 import { MapTransitionContext } from './contexts/MapTransitionContext'
+import { cargarMapaData } from './data/services/mapaService'
 import { checkDatabaseConnectionOnce } from './services/dbTest'
 
 const Riesgos = lazyWithPreload(() => import('./pages/Riesgos'))
@@ -39,7 +40,7 @@ export const preloadablePages: Record<string, ReturnType<typeof lazyWithPreload>
  *  Tareas de la pantalla de carga inicial (real)
  * ══════════════════════════════════════════════════════════════ */
 const PRELOAD_TASKS: PreloadTask[] = [
-  { id: 'core', label: 'Inicializando sistema…', run: () => {}, minDuration: 400 },
+  { id: 'core', label: 'Inicializando sistema…', run: () => { }, minDuration: 400 },
   { id: 'riesgos', label: 'Cargando factores de riesgo…', run: () => preloadablePages['/riesgos']?.preload?.(), minDuration: 300 },
   { id: 'impacto', label: 'Calculando impacto sanitario…', run: () => preloadablePages['/impacto']?.preload?.(), minDuration: 300 },
   { id: 'acceso', label: 'Armando línea de tiempo de acceso…', run: () => preloadablePages['/acceso']?.preload?.(), minDuration: 300 },
@@ -55,18 +56,32 @@ const PRELOAD_TASKS: PreloadTask[] = [
     },
     minDuration: 1200,
   },
-  { id: 'final', label: 'Últimos ajustes…', run: () => {}, minDuration: 400 },
+  { id: 'final', label: 'Últimos ajustes…', run: () => { }, minDuration: 400 },
 ]
 
 /* ══════════════════════════════════════════════════════════════
  *  Tareas FICTICIAS del mapa
  * ══════════════════════════════════════════════════════════════ */
 const MAP_LOADING_TASKS: PreloadTask[] = [
-  { id: 'geo-init', label: 'Inicializando visor geoespacial…', run: () => {}, minDuration: 900 },
-  { id: 'geo-parse', label: 'Interpretando datos geográficos…', run: () => {}, minDuration: 1100 },
-  { id: 'geo-render', label: 'Renderizando capas base…', run: () => {}, minDuration: 900 },
-  { id: 'centers', label: 'Ubicando centros de rehabilitación…', run: () => {}, minDuration: 1100 },
-  { id: 'final', label: 'Preparando interfaz…', run: () => {}, minDuration: 800 },
+  {
+    id: 'geo-data',
+    label: 'Cargando datos del mapa…',
+    run: async () => { await cargarMapaData() },
+    minDuration: 500,
+  },
+  {
+    id: 'geo-json',
+    label: 'Inicializando visor geoespacial…',
+    run: async () => {
+      const res = await fetch('/models/provincias.geojson')
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+      await res.json() // se descarta: Mapa3D lo vuelve a pedir (queda en caché HTTP)
+    },
+    minDuration: 600,
+  },
+  { id: 'geo-parse', label: 'Interpretando datos geográficos…', run: () => { }, minDuration: 400 },
+  { id: 'geo-render', label: 'Renderizando capas base…', run: () => { }, minDuration: 400 },
+  { id: 'geo-final', label: 'Preparando interfaz…', run: () => { }, minDuration: 400 },
 ]
 
 type Phase =

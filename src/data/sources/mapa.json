@@ -1,0 +1,600 @@
+{
+  "version": "1.0.0",
+  "fecha_actualizacion": "2026-10-14",
+  "fuente_principal": "DEIS - Ministerio de Salud de la Nación",
+  "anios": [2018, 2019, 2020, 2021, 2022],
+  "provincias": [
+    {
+      "id": "CABA",
+      "nombre": "Ciudad Autónoma de Buenos Aires",
+      "region": "AMBA",
+      "poblacion_2022": 3120612,
+      "datos_por_anio": {
+        "2018": { "muertes_totales": 29723, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2019": { "muertes_totales": 30895, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2020": { "muertes_totales": 35569, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2021": { "muertes_totales": 36201, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2022": { "muertes_totales": 33331, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null }
+      },
+      "centros_rehabilitacion": 16,
+      "cardiologos": null,
+      "factores_riesgo": {
+        "hipertension": 26.6,
+        "colesterol": 29.6,
+        "obesidad": 50.2,
+        "tabaquismo": 17.5,
+        "sedentarismo": 32.4,
+        "diabetes": 8.8
+      }
+    },
+    {
+      "id": "Buenos Aires",
+      "nombre": "Provincia de Buenos Aires",
+      "region": "AMBA",
+      "poblacion_2022": 17569053,
+      "datos_por_anio": {
+        "2018": { "muertes_totales": 135997, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2019": { "muertes_totales": 137993, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2020": { "muertes_totales": 150105, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2021": { "muertes_totales": 177133, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2022": { "muertes_totales": 158015, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null }
+      },
+      "centros_rehabilitacion": 25,
+      "cardiologos": null,
+      "factores_riesgo": {
+        "hipertension": 35.3,
+        "colesterol": 27.9,
+        "obesidad": 62.3,
+        "tabaquismo": 23.1,
+        "sedentarismo": 46.0,
+        "diabetes": 13.1
+      }
+    },
+    {
+      "id": "Catamarca",
+      "nombre": "Catamarca",
+      "region": "NOA",
+      "poblacion_2022": 429556,
+      "datos_por_anio": {
+        "2018": { "muertes_totales": 2666, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2019": { "muertes_totales": 2526, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2020": { "muertes_totales": 2466, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2021": { "muertes_totales": 3572, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2022": { "muertes_totales": 3182, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null }
+      },
+      "centros_rehabilitacion": 1,
+      "cardiologos": null,
+      "factores_riesgo": {
+        "hipertension": 35.8,
+        "colesterol": 34.5,
+        "obesidad": 67.5,
+        "tabaquismo": 23.5,
+        "sedentarismo": 58.1,
+        "diabetes": 11.5
+      }
+    },
+    {
+      "id": "Córdoba",
+      "nombre": "Córdoba",
+      "region": "Centro",
+      "poblacion_2022": 3978984,
+      "datos_por_anio": {
+        "2018": { "muertes_totales": 29754, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2019": { "muertes_totales": 30181, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2020": { "muertes_totales": 33082, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2021": { "muertes_totales": 37491, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2022": { "muertes_totales": 35811, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null }
+      },
+      "centros_rehabilitacion": 2,
+      "cardiologos": null,
+      "factores_riesgo": {
+        "hipertension": 34.4,
+        "colesterol": 27.2,
+        "obesidad": 59.9,
+        "tabaquismo": 26.7,
+        "sedentarismo": 46.9,
+        "diabetes": 13.7
+      }
+    },
+    {
+      "id": "Corrientes",
+      "nombre": "Corrientes",
+      "region": "NEA",
+      "poblacion_2022": 1197553,
+      "datos_por_anio": {
+        "2018": { "muertes_totales": 7269, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2019": { "muertes_totales": 7486, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2020": { "muertes_totales": 7324, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2021": { "muertes_totales": 9324, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2022": { "muertes_totales": 8984, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null }
+      },
+      "centros_rehabilitacion": 1,
+      "cardiologos": null,
+      "factores_riesgo": {
+        "hipertension": 40.2,
+        "colesterol": 31.8,
+        "obesidad": 62.5,
+        "tabaquismo": 14.9,
+        "sedentarismo": 40.2,
+        "diabetes": 13.3
+      }
+    },
+    {
+      "id": "Chaco",
+      "nombre": "Chaco",
+      "region": "NEA",
+      "poblacion_2022": 1142963,
+      "datos_por_anio": {
+        "2018": { "muertes_totales": 8110, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2019": { "muertes_totales": 8222, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2020": { "muertes_totales": 8740, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2021": { "muertes_totales": 11231, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2022": { "muertes_totales": 9895, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null }
+      },
+      "centros_rehabilitacion": 0,
+      "cardiologos": null,
+      "factores_riesgo": {
+        "hipertension": 36.9,
+        "colesterol": 33.0,
+        "obesidad": 58.8,
+        "tabaquismo": 15.4,
+        "sedentarismo": 57.3,
+        "diabetes": 10.3
+      }
+    },
+    {
+      "id": "Chubut",
+      "nombre": "Chubut",
+      "region": "Patagonia",
+      "poblacion_2022": 618994,
+      "datos_por_anio": {
+        "2018": { "muertes_totales": 3353, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2019": { "muertes_totales": 3374, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2020": { "muertes_totales": 3873, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2021": { "muertes_totales": 4484, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2022": { "muertes_totales": 4125, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null }
+      },
+      "centros_rehabilitacion": 0,
+      "cardiologos": null,
+      "factores_riesgo": {
+        "hipertension": 30.4,
+        "colesterol": 21.2,
+        "obesidad": 64.8,
+        "tabaquismo": 23.4,
+        "sedentarismo": 34.3,
+        "diabetes": 12.4
+      }
+    },
+    {
+      "id": "Entre Ríos",
+      "nombre": "Entre Ríos",
+      "region": "Centro",
+      "poblacion_2022": 1426736,
+      "datos_por_anio": {
+        "2018": { "muertes_totales": 10745, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2019": { "muertes_totales": 10565, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2020": { "muertes_totales": 10842, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2021": { "muertes_totales": 13097, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2022": { "muertes_totales": 12806, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null }
+      },
+      "centros_rehabilitacion": 1,
+      "cardiologos": null,
+      "factores_riesgo": {
+        "hipertension": 39.5,
+        "colesterol": 28.9,
+        "obesidad": 60.5,
+        "tabaquismo": 22.7,
+        "sedentarismo": 40.0,
+        "diabetes": 10.8
+      }
+    },
+    {
+      "id": "Formosa",
+      "nombre": "Formosa",
+      "region": "NEA",
+      "poblacion_2022": 606041,
+      "datos_por_anio": {
+        "2018": { "muertes_totales": 3898, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2019": { "muertes_totales": 3815, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2020": { "muertes_totales": 3690, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2021": { "muertes_totales": 5134, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2022": { "muertes_totales": 4702, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null }
+      },
+      "centros_rehabilitacion": 0,
+      "cardiologos": null,
+      "factores_riesgo": {
+        "hipertension": 52.2,
+        "colesterol": 25.7,
+        "obesidad": 68.9,
+        "tabaquismo": 18.5,
+        "sedentarismo": 69.1,
+        "diabetes": 12.1
+      }
+    },
+    {
+      "id": "Jujuy",
+      "nombre": "Jujuy",
+      "region": "NOA",
+      "poblacion_2022": 797955,
+      "datos_por_anio": {
+        "2018": { "muertes_totales": 4498, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2019": { "muertes_totales": 4534, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2020": { "muertes_totales": 6522, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2021": { "muertes_totales": 5786, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2022": { "muertes_totales": 5452, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null }
+      },
+      "centros_rehabilitacion": 0,
+      "cardiologos": null,
+      "factores_riesgo": {
+        "hipertension": 26.7,
+        "colesterol": 36.3,
+        "obesidad": 68.2,
+        "tabaquismo": 18.8,
+        "sedentarismo": 29.4,
+        "diabetes": 8.9
+      }
+    },
+    {
+      "id": "La Pampa",
+      "nombre": "La Pampa",
+      "region": "Patagonia",
+      "poblacion_2022": 366022,
+      "datos_por_anio": {
+        "2018": { "muertes_totales": 2488, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2019": { "muertes_totales": 2454, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2020": { "muertes_totales": 2423, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2021": { "muertes_totales": 3445, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2022": { "muertes_totales": 2935, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null }
+      },
+      "centros_rehabilitacion": 0,
+      "cardiologos": null,
+      "factores_riesgo": {
+        "hipertension": 35.4,
+        "colesterol": 31.8,
+        "obesidad": 64.2,
+        "tabaquismo": 20.8,
+        "sedentarismo": 56.2,
+        "diabetes": 14.6
+      }
+    },
+    {
+      "id": "La Rioja",
+      "nombre": "La Rioja",
+      "region": "NOA",
+      "poblacion_2022": 384607,
+      "datos_por_anio": {
+        "2018": { "muertes_totales": 2334, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2019": { "muertes_totales": 2282, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2020": { "muertes_totales": 2839, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2021": { "muertes_totales": 3176, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2022": { "muertes_totales": 2771, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null }
+      },
+      "centros_rehabilitacion": 0,
+      "cardiologos": null,
+      "factores_riesgo": {
+        "hipertension": 33.9,
+        "colesterol": 32.1,
+        "obesidad": 62.7,
+        "tabaquismo": 20.9,
+        "sedentarismo": 61.2,
+        "diabetes": 15.1
+      }
+    },
+    {
+      "id": "Mendoza",
+      "nombre": "Mendoza",
+      "region": "Cuyo",
+      "poblacion_2022": 2014533,
+      "datos_por_anio": {
+        "2018": { "muertes_totales": 13971, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2019": { "muertes_totales": 14284, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2020": { "muertes_totales": 16514, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2021": { "muertes_totales": 18086, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2022": { "muertes_totales": 16466, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null }
+      },
+      "centros_rehabilitacion": 1,
+      "cardiologos": null,
+      "factores_riesgo": {
+        "hipertension": 34.7,
+        "colesterol": 32.6,
+        "obesidad": 65.4,
+        "tabaquismo": 26.8,
+        "sedentarismo": 39.0,
+        "diabetes": 12.7
+      }
+    },
+    {
+      "id": "Misiones",
+      "nombre": "Misiones",
+      "region": "NEA",
+      "poblacion_2022": 1280960,
+      "datos_por_anio": {
+        "2018": { "muertes_totales": 7180, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2019": { "muertes_totales": 7268, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2020": { "muertes_totales": 7072, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2021": { "muertes_totales": 9643, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2022": { "muertes_totales": 9457, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null }
+      },
+      "centros_rehabilitacion": 0,
+      "cardiologos": null,
+      "factores_riesgo": {
+        "hipertension": 36.7,
+        "colesterol": 31.2,
+        "obesidad": 61.6,
+        "tabaquismo": 15.8,
+        "sedentarismo": 57.5,
+        "diabetes": 13.7
+      }
+    },
+    {
+      "id": "Neuquén",
+      "nombre": "Neuquén",
+      "region": "Patagonia",
+      "poblacion_2022": 726590,
+      "datos_por_anio": {
+        "2018": { "muertes_totales": 3287, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2019": { "muertes_totales": 3521, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2020": { "muertes_totales": 4353, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2021": { "muertes_totales": 5202, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2022": { "muertes_totales": 4185, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null }
+      },
+      "centros_rehabilitacion": 0,
+      "cardiologos": null,
+      "factores_riesgo": {
+        "hipertension": 39.2,
+        "colesterol": 31.0,
+        "obesidad": 67.4,
+        "tabaquismo": 22.0,
+        "sedentarismo": 43.2,
+        "diabetes": 13.9
+      }
+    },
+    {
+      "id": "Río Negro",
+      "nombre": "Río Negro",
+      "region": "Patagonia",
+      "poblacion_2022": 762067,
+      "datos_por_anio": {
+        "2018": { "muertes_totales": 4590, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2019": { "muertes_totales": 4643, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2020": { "muertes_totales": 5791, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2021": { "muertes_totales": 6686, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2022": { "muertes_totales": 5457, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null }
+      },
+      "centros_rehabilitacion": 1,
+      "cardiologos": null,
+      "factores_riesgo": {
+        "hipertension": 31.2,
+        "colesterol": 23.2,
+        "obesidad": 66.3,
+        "tabaquismo": 21.3,
+        "sedentarismo": 49.6,
+        "diabetes": 12.8
+      }
+    },
+    {
+      "id": "Salta",
+      "nombre": "Salta",
+      "region": "NOA",
+      "poblacion_2022": 1440672,
+      "datos_por_anio": {
+        "2018": { "muertes_totales": 8178, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2019": { "muertes_totales": 8046, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2020": { "muertes_totales": 9736, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2021": { "muertes_totales": 10092, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2022": { "muertes_totales": 9534, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null }
+      },
+      "centros_rehabilitacion": 0,
+      "cardiologos": null,
+      "factores_riesgo": {
+        "hipertension": 28.3,
+        "colesterol": 38.7,
+        "obesidad": 63.4,
+        "tabaquismo": 23.0,
+        "sedentarismo": 52.6,
+        "diabetes": 10.8
+      }
+    },
+    {
+      "id": "San Juan",
+      "nombre": "San Juan",
+      "region": "Cuyo",
+      "poblacion_2022": 818234,
+      "datos_por_anio": {
+        "2018": { "muertes_totales": 5245, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2019": { "muertes_totales": 5179, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2020": { "muertes_totales": 5598, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2021": { "muertes_totales": 6891, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2022": { "muertes_totales": 6190, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null }
+      },
+      "centros_rehabilitacion": 0,
+      "cardiologos": null,
+      "factores_riesgo": {
+        "hipertension": 32.8,
+        "colesterol": 32.1,
+        "obesidad": 65.8,
+        "tabaquismo": 21.5,
+        "sedentarismo": 23.2,
+        "diabetes": 15.9
+      }
+    },
+    {
+      "id": "San Luis",
+      "nombre": "San Luis",
+      "region": "Cuyo",
+      "poblacion_2022": 540905,
+      "datos_por_anio": {
+        "2018": { "muertes_totales": 3331, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2019": { "muertes_totales": 3383, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2020": { "muertes_totales": 3564, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2021": { "muertes_totales": 4673, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2022": { "muertes_totales": 3982, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null }
+      },
+      "centros_rehabilitacion": 1,
+      "cardiologos": null,
+      "factores_riesgo": {
+        "hipertension": 40.9,
+        "colesterol": 34.8,
+        "obesidad": 59.7,
+        "tabaquismo": 20.8,
+        "sedentarismo": 38.9,
+        "diabetes": 17.3
+      }
+    },
+    {
+      "id": "Santa Cruz",
+      "nombre": "Santa Cruz",
+      "region": "Patagonia",
+      "poblacion_2022": 333473,
+      "datos_por_anio": {
+        "2018": { "muertes_totales": 1641, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2019": { "muertes_totales": 1603, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2020": { "muertes_totales": 1940, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2021": { "muertes_totales": 2298, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2022": { "muertes_totales": 1962, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null }
+      },
+      "centros_rehabilitacion": 1,
+      "cardiologos": null,
+      "factores_riesgo": {
+        "hipertension": 33.5,
+        "colesterol": 37.2,
+        "obesidad": 73.2,
+        "tabaquismo": 27.1,
+        "sedentarismo": 54.7,
+        "diabetes": 14.3
+      }
+    },
+    {
+      "id": "Santa Fe",
+      "nombre": "Santa Fe",
+      "region": "Centro",
+      "poblacion_2022": 3556522,
+      "datos_por_anio": {
+        "2018": { "muertes_totales": 29382, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2019": { "muertes_totales": 29773, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2020": { "muertes_totales": 32730, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2021": { "muertes_totales": 37931, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2022": { "muertes_totales": 34846, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null }
+      },
+      "centros_rehabilitacion": 2,
+      "cardiologos": null,
+      "factores_riesgo": {
+        "hipertension": 36.2,
+        "colesterol": 25.6,
+        "obesidad": 61.3,
+        "tabaquismo": 21.5,
+        "sedentarismo": 34.5,
+        "diabetes": 13.5
+      }
+    },
+    {
+      "id": "Santiago del Estero",
+      "nombre": "Santiago del Estero",
+      "region": "NOA",
+      "poblacion_2022": 1054028,
+      "datos_por_anio": {
+        "2018": { "muertes_totales": 6163, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2019": { "muertes_totales": 6351, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2020": { "muertes_totales": 6240, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2021": { "muertes_totales": 8229, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2022": { "muertes_totales": 7163, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null }
+      },
+      "centros_rehabilitacion": 0,
+      "cardiologos": null,
+      "factores_riesgo": {
+        "hipertension": 38.3,
+        "colesterol": 28.9,
+        "obesidad": 65.3,
+        "tabaquismo": 16.6,
+        "sedentarismo": 54.6,
+        "diabetes": 13.7
+      }
+    },
+    {
+      "id": "Tucumán",
+      "nombre": "Tucumán",
+      "region": "NOA",
+      "poblacion_2022": 1703186,
+      "datos_por_anio": {
+        "2018": { "muertes_totales": 11101, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2019": { "muertes_totales": 11436, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2020": { "muertes_totales": 12967, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2021": { "muertes_totales": 14906, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2022": { "muertes_totales": 13646, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null }
+      },
+      "centros_rehabilitacion": 1,
+      "cardiologos": null,
+      "factores_riesgo": {
+        "hipertension": 36.7,
+        "colesterol": 33.5,
+        "obesidad": 64.3,
+        "tabaquismo": 23.0,
+        "sedentarismo": 50.7,
+        "diabetes": 13.3
+      }
+    },
+    {
+      "id": "Tierra del Fuego",
+      "nombre": "Tierra del Fuego",
+      "region": "Patagonia",
+      "poblacion_2022": 190641,
+      "datos_por_anio": {
+        "2018": { "muertes_totales": 603, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2019": { "muertes_totales": 581, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2020": { "muertes_totales": 850, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2021": { "muertes_totales": 849, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null },
+        "2022": { "muertes_totales": 758, "muertes_cardiovasculares": null, "tasa_cardiovascular_100k": null, "tasa_ajustada_edad_100k": null, "gasto_salud_percapita": null }
+      },
+      "centros_rehabilitacion": 1,
+      "cardiologos": null,
+      "factores_riesgo": {
+        "hipertension": 33.9,
+        "colesterol": 31.8,
+        "obesidad": 68.2,
+        "tabaquismo": 24.9,
+        "sedentarismo": 38.7,
+        "diabetes": 15.9
+      }
+    }
+  ],
+  "agregados_regionales": {
+    "AMBA": { "poblacion_2022": 20689665, "muertes_cv_2022": null },
+    "Centro": { "poblacion_2022": 8962242, "muertes_cv_2022": null },
+    "Cuyo": { "poblacion_2022": 3373672, "muertes_cv_2022": null },
+    "NOA": { "poblacion_2022": 5095978, "muertes_cv_2022": null },
+    "NEA": { "poblacion_2022": 4231517, "muertes_cv_2022": null },
+    "Patagonia": { "poblacion_2022": 2997787, "muertes_cv_2022": null }
+  },
+  "notas": {
+    "muertes_cardiovasculares": "No se dispone del filtrado por causa CIE-10 I00-I99 en el dataset final. Las muertes totales incluyen todas las causas.",
+    "gasto_salud_percapita": "Solo se cuenta con datos parciales para CABA y Buenos Aires, no comparables con el resto. No se incluyen en este JSON.",
+    "cardiologos": "El estudio de referencia (SAC/FAC, 2007) estima 7.468 cardiólogos a nivel nacional y una concentración del 51% en CABA y Buenos Aires, pero no desglosa números absolutos por provincia."
+  },
+  "fuentes": {
+    "mortalidad": {
+      "nombre": "DEIS - Estadísticas Vitales",
+      "url": "https://www.argentina.gob.ar/salud/deis",
+      "nota": "Defunciones totales por provincia y año (2018-2022)."
+    },
+    "factores_riesgo": {
+      "nombre": "ENFR 2018 - INDEC",
+      "url": "https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-32-68",
+      "nota": "Prevalencia de factores de riesgo por provincia."
+    },
+    "poblacion": {
+      "nombre": "Censo Nacional de Población, Hogares y Viviendas 2022 - INDEC",
+      "url": "https://www.indec.gob.ar/indec/web/Nivel4-Tema-2-41-165",
+      "nota": "Población total por provincia, año 2022."
+    },
+    "centros_rehabilitacion": {
+      "nombre": "RENACER-CV - Registro Nacional de Centros de Rehabilitación Cardiovascular",
+      "url": "https://rac.sac.org.ar/index.php/rac/article/download/2795/6820",
+      "nota": "74 centros identificados, 59 respondieron. Distribución por provincia según Figura 1 del artículo."
+    },
+    "cardiologos": {
+      "nombre": "Estimación de la oferta y la demanda de cardiólogos en la Argentina - SAC/FAC",
+      "url": "https://www.scielo.org.ar/img/revistas/rac/v77n1/html/v77n1a06.htm",
+      "nota": "Total nacional: 7.468 cardiólogos (2007). Distribución porcentual por provincia no desglosada en números absolutos."
+    }
+  }
+}

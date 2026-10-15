@@ -125,7 +125,7 @@ export default function TutorialMapa() {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.3 }}
                     onClick={handleClose}
-                    className="fixed inset-0 z-[80] hidden lg:flex items-center justify-center
+                    className="fixed inset-0 z-80 hidden lg:flex items-center justify-center
                      bg-[#0E0A1F]/85 backdrop-blur-md px-6"
                 >
                     <motion.div

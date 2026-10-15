@@ -1,36 +1,10 @@
-import { useCallback, useState } from 'react'
-import PanelControl, {
-  type FiltrosMapa,
-  type OpcionesPanel,
-} from '../components/mapa/PanelControl'
+import { useCallback, useEffect, useState } from 'react'
+import PanelControl, { type FiltrosMapa, type OpcionesPanel } from '../components/mapa/PanelControl'
 import Mapa3D from '../components/mapa/Mapa3D'
 import TutorialMapa from '../components/mapa/TutorialMapa'
-
-/* ═══════════════════════════════════════════════════════════
-   OPCIONES DEL PANEL
-   ═══════════════════════════════════════════════════════════ */
-
-const OPCIONES_BASE: Omit<OpcionesPanel, 'provincias'> = {
-  regiones: ['Todas', 'AMBA', 'Centro', 'Cuyo', 'NOA', 'NEA', 'Patagonia'],
-  anios: [2018, 2019, 2020, 2021, 2022],
-  enfermedades: [
-    'Todas',
-    'Cardiopatía isquémica',
-    'Enfermedad cerebrovascular',
-    'Insuficiencia cardíaca',
-    'Enfermedad hipertensiva',
-    'Arritmias',
-    'Enfermedad valvular',
-  ],
-  indicadores: [
-    'Muertes absolutas',
-    'Tasa por 100.000 hab.',
-    '% del total de muertes',
-    'Variación 2018–2022',
-    'Centros por 100.000 hab.',
-    'Cardiólogos por millón',
-  ],
-}
+import CardExplicativa, { type CardContenido } from '../components/mapa/CardExplicativa'
+import { cargarMapaData, getMapaDataSync } from '../data/services/mapaService'
+import type { MapaData } from '../data/types/mapa'
 
 const FILTROS_INICIALES: FiltrosMapa = {
   provincias: [],
@@ -40,49 +14,57 @@ const FILTROS_INICIALES: FiltrosMapa = {
   comparar: false,
   enfermedad: 'Todas',
   indicador: 'Muertes absolutas',
-  viz: 'barras',
+  viz: 'calor',
 }
 
-/* ═══════════════════════════════════════════════════════════
-   VISTA MAPA
-   ═══════════════════════════════════════════════════════════ */
-
 export default function Mapa() {
+  const [data, setData] = useState<MapaData | null>(() => getMapaDataSync())
   const [filtros, setFiltros] = useState<FiltrosMapa>(FILTROS_INICIALES)
-  const [provinciasCargadas, setProvinciasCargadas] = useState<string[]>([])
+  const [card, setCard] = useState<CardContenido | null>(null)
 
-  const handleProvinciasCargadas = useCallback((nombres: string[]) => {
-    setProvinciasCargadas(nombres)
+  useEffect(() => {
+    if (data) return
+    cargarMapaData().then(setData).catch((e) => console.error('[Mapa]', e))
+  }, [data])
+
+  const abrirCard = useCallback((titulo: string, texto: string) => {
+    setCard({ titulo, texto })
   }, [])
 
-  const opciones: OpcionesPanel = {
-    ...OPCIONES_BASE,
-    provincias: provinciasCargadas,
-  }
+  const opciones: OpcionesPanel | null = data
+    ? {
+        provincias: [...data.provincias].map((p) => p.nombre).sort(),
+        regiones: ['Todas', ...data.regiones],
+        anios: data.anios,
+        enfermedades: data.enfermedades_disponibles,
+        indicadores: data.indicadores_disponibles,
+      }
+    : null
 
   return (
     <>
-      {/* Panel de control — anclado al viewport, sobre todo lo demás */}
-      <PanelControl
-        opciones={opciones}
-        filtros={filtros}
-        onChange={setFiltros}
-      />
-
-      {/* Contenedor del mapa: cubre TODO el main del MapLayout.
-          El fondo azul profundo solo aparece acá adentro, dejando
-          los bordes del HUD con el gradiente violeta global. */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{ backgroundColor: '#9DBCCF' }}
-      >
-        <Mapa3D
+      {opciones && (
+        <PanelControl
+          opciones={opciones}
           filtros={filtros}
-          onProvinciasCargadas={handleProvinciasCargadas}
+          onChange={setFiltros}
+          onAbrirCard={abrirCard}
+          data={data!}
         />
+      )}
+
+      <div className="absolute inset-0 z-0" style={{ backgroundColor: '#9DBCCF' }}>
+        {data ? (
+          <Mapa3D filtros={filtros} data={data} />
+        ) : (
+          <div className="flex h-full items-center justify-center text-sm text-slate-100/80">
+            Cargando datos del mapa…
+          </div>
+        )}
       </div>
 
       <TutorialMapa />
+      <CardExplicativa card={card} onClose={() => setCard(null)} />
     </>
   )
 }
