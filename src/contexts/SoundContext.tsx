@@ -16,7 +16,7 @@ const SoundContext = createContext<SoundContextValue | null>(null)
 export function SoundProvider({ children }: { children: ReactNode }) {
   const [musicEnabled, setMusicEnabled] = useState(false)
   const [sfxEnabled, setSfxEnabled] = useState(true)
-  const [musicVolume, setMusicVolume] = useState(0.3)
+  const [musicVolume] = useState(0.3)
 
   const toggleMusic = useCallback(() => {
     setMusicEnabled((prev) => !prev)

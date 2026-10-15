@@ -18,7 +18,6 @@ interface RiesgoCardProps {
 
 export default function RiesgoCard({
   factor,
-  accentColor = '#7BA8D9',
   index = 0,
 }: RiesgoCardProps) {
   const { nombre, mortalidad_asociada, descripcion, prevalencia_por_provincia } =
