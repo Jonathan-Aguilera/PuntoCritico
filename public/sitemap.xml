@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Página de Inicio -->
+  <url>
+    <loc>https://punto-critico.vercel.app/</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Factores de Riesgo -->
+  <url>
+    <loc>https://punto-critico.vercel.app/riesgos</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Impacto Sanitario -->
+  <url>
+    <loc>https://punto-critico.vercel.app/impacto</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Acceso e Información Histórica -->
+  <url>
+    <loc>https://punto-critico.vercel.app/acceso</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Hábitos, Mitos y Encuesta -->
+  <url>
+    <loc>https://punto-critico.vercel.app/habitos</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Soluciones y Prevención -->
+  <url>
+    <loc>https://punto-critico.vercel.app/soluciones</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Historias y Homenaje a Favaloro -->
+  <url>
+    <loc>https://punto-critico.vercel.app/historias</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Mapa 3D e Indicadores Provinciales -->
+  <url>
+    <loc>https://punto-critico.vercel.app/mapa</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Fuentes Bibliográficas -->
+  <url>
+    <loc>https://punto-critico.vercel.app/fuentes</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>
